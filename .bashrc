@@ -141,4 +141,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
-alias config='/usr/bin/git --git-dir=/home/vandemjh/.cfg/ --work-tree=/home/vandemjh'
+
+alias config='/usr/bin/git --git-dir=/home/jack/.cfg/ --work-tree=/home/jack'
+>>>>>>> desktop
