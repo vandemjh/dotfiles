@@ -143,4 +143,3 @@ export NVM_DIR="$HOME/.nvm"
 function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
 
 alias config='/usr/bin/git --git-dir=/home/jack/.cfg/ --work-tree=/home/jack'
->>>>>>> desktop
