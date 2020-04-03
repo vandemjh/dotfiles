@@ -1,0 +1,5 @@
+[ui]
+username = Jack H. Vandemeulebroecke <vandemjh@dukes.jmu.edu>
+merge = meld
+[extensions]
+extdiff = 
