@@ -127,6 +127,9 @@ alias cdlampp='cd /opt/lampp/htdocs/'
 
 alias screenshot='gnome-screenshot -cae shadow'
 
+# Uses the word config and the .cfg directory to keep dotfiles up to date
+alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -142,4 +145,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
 
-alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
