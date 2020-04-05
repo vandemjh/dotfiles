@@ -1,5 +1,11 @@
 # Jack Vandemeulebroecke
-# Make projects directory
+echo ===== Updating packages =====
+sudo apt-get update
+
+echo ===== Installing xclip =====
+sudo apt-get install xclip
+
+# Create projects directory
 echo ===== Creating project directory =====
 mkdir ~/Desktop/Projects
 
@@ -17,4 +23,6 @@ cd /usr/local/bin
 curl https://getmic.ro | sudo bash
 cd ~
 
-echo ===== asdf =====
+echo ===== Install Meld =====
+sudo apt-get install meld
+

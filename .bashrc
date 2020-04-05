@@ -122,6 +122,12 @@ alias screenshot='gnome-screenshot -cae shadow'
 # Uses the word config and the .cfg directory to keep dotfiles up to date
 alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
 
+# Open Micro editor with 'm'
+alias m='micro'
+
+# Uses googler with 'g'
+alias g='googler'
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
