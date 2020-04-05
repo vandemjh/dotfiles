@@ -1,4 +1,20 @@
-git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+# Jack Vandemeulebroecke
+# Make projects directory
+echo ===== Creating project directory =====
 mkdir ~/Desktop/Projects
 
+# Git bash prompt
+echo ===== Downloading Git-bash-prompt =====
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
+# Get googler
+echo ===== Downloading googler =====
+sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v4.0/googler && sudo chmod +x /usr/local/bin/googler
+
+# Install micro
+echo ===== Installing Micro Editor =====
+cd /usr/local/bin
+curl https://getmic.ro | sudo bash
+cd ~
+
+echo ===== asdf =====

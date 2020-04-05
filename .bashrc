@@ -107,28 +107,21 @@ fi
 
 # Custom Aliases
 alias ews="cd ~/eclipse-workspace"
-
 alias sshjmu="ssh vandemjh@stu.cs.jmu.edu"
-
 alias ssh361="ssh -t vandemjh@stu.cs.jmu.edu 'cd /cs/students/cs361/s20/kirkpams/submit/vandemjh/ ; bash'"
-
 alias fixkeys="xmodmap ~/.modifiedKeys.xmod"
-
 alias copy='xclip -sel clip'
 alias cp='xclip -sel clip'
-
 alias cdcpp='cd ~/eclipse-workspace/C++/'
 alias cdjava='cd ~/eclipse-workspace/Java/'
 alias cdpp='cd ~/Desktop/Projects/'
-
 alias lampp-start='sudo /opt/lampp/lampp start'
 alias lampp-stop='sudo /opt/lampp/lampp stop'
 alias cdlampp='cd /opt/lampp/htdocs/'
-
 alias screenshot='gnome-screenshot -cae shadow'
-
 # Uses the word config and the .cfg directory to keep dotfiles up to date
 alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
