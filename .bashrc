@@ -146,8 +146,11 @@ export NVM_DIR="$HOME/.nvm"
 function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
 
 # Bash-git-prompt info
+# Install at https://github.com/magicmonty/bash-git-prompt
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     GIT_PROMPT_ONLY_IN_REPO=1
+    GIT_PROMPT_SHOW_UPSTREAM=1
+    GIT_PROMPT_THEME=Minimal
     source $HOME/.bash-git-prompt/gitprompt.sh
 fi
 
