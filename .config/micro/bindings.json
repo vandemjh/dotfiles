@@ -1,19 +1,10 @@
 {
-	// Working commands
     "Alt-/": "lua:comment.comment",
     "Ctrl-d": "SpawnMultiCursor",
-    "MouseMiddle": "None",
-    "CtrlT": "VSplit",
-    "CtrlShift-d": "SkipMultiCursor",
     "CtrlBacktab": "PreviousTab",
-
-
-    // Broken Commands
-    // "Ctrl-MouseLeft": "MouseMultiCursor",
-    "Ctrl-/": "lua:comment.comment",
-    // "CtrlT": "ShellMode",
-    // "Ctrl+Shift+d": "SkipMultiCursor",
-    "Ctrl\u003c": "JumpToMatchingBrace",
-    "Ctrl,": "JumpToMatchingBrace"
-
+    "CtrlT": "VSplit,OpenFile",
+    "CtrlR": "command:run make",
+    "Alt-r": "command:run ./*",
+    "\x1a": "Redo",
+    "MouseMiddle": "None"
 }
