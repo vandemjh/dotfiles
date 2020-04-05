@@ -1,10 +1,12 @@
 {
     "Alt-/": "lua:comment.comment",
-    "Ctrl-d": "SpawnMultiCursor",
+    "CtrlD": "SpawnMultiCursor",
     "CtrlBacktab": "PreviousTab",
-    "CtrlT": "VSplit,OpenFile",
+    "CtrlT": "AddTab",
+    "CtrlH": "VSplit",
     "CtrlR": "command:run make",
-    "Alt-r": "command:run ./*",
-    "\x1a": "Redo",
-    "MouseMiddle": "None"
+    "F5": "command:run ./*",
+    "Alt,": "JumpToMatchingBrace",
+
+    "MouseMiddle": "None",
 }
