@@ -105,6 +105,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Exports
+# Adds inputrc file from home
+export INPUTRC=~/.inputrc
+
 # Custom Aliases
 alias ews="cd ~/eclipse-workspace"
 alias sshjmu="ssh vandemjh@stu.cs.jmu.edu"
