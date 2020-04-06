@@ -7,7 +7,9 @@
     "CtrlR": "command:run make",
     "F5": "command:run ./*",
     "Alt,": "JumpToMatchingBrace",
+    //"Alt.": "JumpToMatchingBrace|SelectToStartOfLine",
     "CtrlUp": "MoveLinesUp",
     "CtrlDown": "MoveLinesDown",
     "MouseMiddle": "None"
+    
 }

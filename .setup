@@ -9,10 +9,10 @@ sudo apt-get install xclip
 echo ===== Creating project directory =====
 mkdir ~/Desktop/Projects
 
-# echo ===== Updating Git repos in Projects Directory  =====
-# cd ~/Desktop/Projects
-# find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull
-# cd ~
+echo ===== Updating Git repos in Projects Directory  =====
+cd ~/Desktop/Projects
+find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull
+cd ~
 
 # Download Git bash prompt
 echo ===== Downloading Git-bash-prompt =====
