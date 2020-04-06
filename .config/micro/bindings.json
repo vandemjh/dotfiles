@@ -10,6 +10,7 @@
     //"Alt.": "JumpToMatchingBrace|SelectToStartOfLine",
     "CtrlUp": "MoveLinesUp",
     "CtrlDown": "MoveLinesDown",
+    "CtrlH": "DeleteWordLeft",
     "MouseMiddle": "None"
     
 }
