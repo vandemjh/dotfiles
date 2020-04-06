@@ -3,22 +3,17 @@
 # programs include FTP, Bash, and GDB.
 $include /etc/inputrc
 
-
+# Add control + arrow key support
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
 "\e[5C": forward-word
 "\e[5D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
-# 
-# "\e[1;5C": forward-word
-# "\e[1;5D": backward-word
-# "\e\e[C": forward-word
-# "\e\e[D": backward-word
-# "\e[5C": forward-word
-# "\e[5D": backward-word
-# "\eOC": forward-word
-# "\eOD": backward-word
+
+# Add control + backspace support
+"\C-h": backward-kill-word
+
 # "\e\e[A": "cd ..\n"
 # "0x1b": "cd .."
 # "\x1b\x5a": "type this text whenever I press alt+shift+z"
