@@ -1,16 +1,15 @@
 {
-    "Alt-/": "lua:comment.comment",
-    "CtrlD": "SpawnMultiCursor",
-    "CtrlBacktab": "PreviousTab",
-    "CtrlT": "AddTab",
-    "CtrlH": "VSplit",
-    "CtrlR": "command:run make",
-    "F5": "command:run ./*",
-    "Alt,": "JumpToMatchingBrace",
-    //"Alt.": "JumpToMatchingBrace|SelectToStartOfLine",
-    "CtrlUp": "MoveLinesUp",
-    "CtrlDown": "MoveLinesDown",
-    "CtrlH": "DeleteWordLeft",
-    "MouseMiddle": "None"
-    
+  "Alt-/": "lua:comment.comment",
+  "CtrlD": "SpawnMultiCursor",
+  "CtrlBacktab": "PreviousTab",
+  "CtrlT": "AddTab",
+  "CtrlH": "VSplit",
+  "CtrlR": "command:run make",
+  "F5": "command:run ./*",
+  "Alt,": "JumpToMatchingBrace",
+  //"Alt.": "JumpToMatchingBrace|SelectToStartOfLine",
+  "CtrlUp": "MoveLinesUp",
+  "CtrlDown": "MoveLinesDown",
+  "CtrlH": "DeleteWordLeft",
+  "MouseMiddle": "None"
 }
