@@ -132,10 +132,6 @@ alias m='micro'
 # Uses googler with 'g'
 alias g='googler --np -n 5'
 
-# Bind keys (work in progress)
-# bind '"\eOC":forward-word'
-# bind '"\eOD":backward-word'
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

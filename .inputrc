@@ -13,6 +13,8 @@ $include /etc/inputrc
 
 # Add control + backspace support
 "\C-h": backward-kill-word
+# Add control + delete support
+"\e[3;5~": kill-word
 
 # "\e\e[A": "cd ..\n"
 # "0x1b": "cd .."
