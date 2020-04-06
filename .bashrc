@@ -126,7 +126,7 @@ alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
 alias m='micro'
 
 # Uses googler with 'g'
-alias g='googler'
+alias g='googler --np -n 5'
 
 
 # enable programmable completion features (you don't need to enable

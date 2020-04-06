@@ -9,7 +9,12 @@ sudo apt-get install xclip
 echo ===== Creating project directory =====
 mkdir ~/Desktop/Projects
 
-# Git bash prompt
+# echo ===== Updating Git repos in Projects Directory  =====
+# cd ~/Desktop/Projects
+# find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull
+# cd ~
+
+# Download Git bash prompt
 echo ===== Downloading Git-bash-prompt =====
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
@@ -17,7 +22,7 @@ git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt -
 echo ===== Downloading googler =====
 sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v4.0/googler && sudo chmod +x /usr/local/bin/googler
 
-# Install micro
+# Install Micro
 echo ===== Installing Micro Editor =====
 cd /usr/local/bin
 curl https://getmic.ro | sudo bash
@@ -25,4 +30,8 @@ cd ~
 
 echo ===== Install Meld =====
 sudo apt-get install meld
+
+# Set the source so changes to bashrc can be used in this terminal
+source ~/.bashrc
+echo ===== All done! =====
 
