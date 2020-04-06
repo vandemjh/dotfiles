@@ -38,7 +38,7 @@ echo ===== Install latest version of NodeJS =====
 nvm install node
 
 echo ===== Install Prettier =====
-npm install --global prettier
+sudo npm install --global prettier
 
 # Set the source so changes to bashrc can be used in this terminal
 source ~/.bashrc
