@@ -5,6 +5,12 @@ sudo apt-get update
 echo ===== Installing xclip =====
 sudo apt-get install xclip
 
+echo ===== Installing xdotool =====
+sudo apt-get install xdotool
+
+echo ===== Installing xclip =====
+sudo apt-get install xbindkeys
+
 # Create projects directory
 echo ===== Creating project directory =====
 mkdir ~/Desktop/Projects
