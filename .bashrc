@@ -136,6 +136,8 @@ alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
 
 # Open Micro editor with 'm'
 alias m='micro'
+# Short for 'Micro all'
+alias ma='micro *.*'
 
 # Uses googler with 'g'
 alias g='googler --np -n 5'
