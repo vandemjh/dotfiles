@@ -110,6 +110,14 @@ fi
 export INPUTRC=~/.inputrc
 
 # Custom Aliases
+# Lists files and their sizes
+alias lt='ls --human-readable --size -1 -S --classify'
+# Lists most recently updated files in directory
+alias recent='ls -t -1'
+# Shows cp but with a progress bar
+alias cpv='rsync -ah --info=progress2'
+# Throws a file in the trash rather than rm
+alias tnt='mv --force -t ~/.local/share/Trash '
 alias ews="cd ~/eclipse-workspace"
 alias sshjmu="ssh vandemjh@stu.cs.jmu.edu"
 alias ssh361="ssh -t vandemjh@stu.cs.jmu.edu 'cd /cs/students/cs361/s20/kirkpams/submit/vandemjh/ ; bash'"
@@ -131,6 +139,16 @@ alias m='micro'
 
 # Uses googler with 'g'
 alias g='googler --np -n 5'
+
+# Quickly commits and pushes in git, don't worry I only use this for personal projects
+# LANG=C.UTF-8 or any UTF-8 English locale supported by your OS may be used
+alias quick-commit="git -c color.status=false status \
+| sed -n -r -e '1,/Changes to be committed:/ d' \
+-e '1,1 d' \
+-e '/^Untracked files:/,$ d' \
+-e 's/^\s*//' \
+-e '/./p' \
+| tee | git commit -F -"
 
 
 # enable programmable completion features (you don't need to enable
