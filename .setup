@@ -28,6 +28,10 @@ git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt -
 echo ===== Downloading googler =====
 sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v4.0/googler && sudo chmod +x /usr/local/bin/googler
 
+# Get taskwarrior
+echo ===== Downloading taskwarrior ====
+sudo apt install taskwarrior
+
 # Install Micro
 echo ===== Installing Micro Editor =====
 cd /usr/local/bin
