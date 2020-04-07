@@ -1,0 +1,2 @@
+# This program is executed after logging in
+# xmodmap -e "keycode 52 = backslash bar"
