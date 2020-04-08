@@ -5,8 +5,12 @@ sudo apt-get update
 echo ===== Installing xclip =====
 sudo apt-get install xclip
 
-echo ===== Installing xdotool =====
-sudo apt-get install xdotool
+# Opted for autokey
+# echo ===== Installing xdotool =====
+# sudo apt-get install xdotool
+
+echo ===== Installing Autokey =====
+sudo apt install autokey-gtk
 
 echo ===== Installing xclip =====
 sudo apt-get install xbindkeys
