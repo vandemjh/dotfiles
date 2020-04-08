@@ -1,7 +1,7 @@
 {
     "Alt,": "JumpToMatchingBrace",
     "Alt-/": "lua:comment.comment",
-    "CtrlBackslash": "DeleteLine",
+    "Alt-1": "DeleteWordRight",
     "Alt-s": "Save\u0026command:run prettier --write *.js,command:run prettier --write *.html,command:run prettier --write *.css,command:run prettier --write *.json",
     "CtrlBackslash": "lua:comment.comment",
     "CtrlBacktab": "PreviousTab",

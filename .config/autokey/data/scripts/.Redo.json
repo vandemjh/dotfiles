@@ -1,0 +1,31 @@
+{
+    "usageCount": 119, 
+    "omitTrigger": false, 
+    "prompt": false, 
+    "description": "Redo", 
+    "abbreviation": {
+        "wordChars": "[\\w]", 
+        "abbreviations": [], 
+        "immediate": false, 
+        "ignoreCase": false, 
+        "backspace": true, 
+        "triggerInside": false
+    }, 
+    "hotkey": {
+        "hotKey": "z", 
+        "modifiers": [
+            "<ctrl>", 
+            "<shift>"
+        ]
+    }, 
+    "modes": [
+        3
+    ], 
+    "showInTrayMenu": true, 
+    "filter": {
+        "regex": "gnome-terminal-server.Gnome-terminal", 
+        "isRecursive": false
+    }, 
+    "type": "script", 
+    "store": {}
+}
