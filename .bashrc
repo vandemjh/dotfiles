@@ -105,6 +105,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Custom evals
+eval "$(jump shell)"
+
 # Exports
 # Adds inputrc file from home
 export INPUTRC=~/.inputrc
@@ -177,3 +180,4 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
 fi
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
