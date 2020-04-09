@@ -125,8 +125,9 @@ alias ews="cd ~/eclipse-workspace"
 alias sshjmu="ssh vandemjh@stu.cs.jmu.edu"
 alias ssh361="ssh -t vandemjh@stu.cs.jmu.edu 'cd /cs/students/cs361/s20/kirkpams/submit/vandemjh/ ; bash'"
 alias fixkeys="xmodmap ~/.modifiedKeys.xmod"
-alias copy='xclip -sel clip'
-alias cp='xclip -sel clip'
+# Useful for copying to clipboard
+alias cb='xclip -sel clip'
+alias clip='xclip -sel clip'
 alias cdcpp='cd ~/eclipse-workspace/C++/'
 alias cdjava='cd ~/eclipse-workspace/Java/'
 alias cdpp='cd ~/Desktop/Projects/'
