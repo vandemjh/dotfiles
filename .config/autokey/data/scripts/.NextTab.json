@@ -1,8 +1,8 @@
 {
-    "usageCount": 121, 
+    "usageCount": 0, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "Redo", 
+    "description": "NextTab", 
     "abbreviation": {
         "wordChars": "[\\w]", 
         "abbreviations": [], 
@@ -12,10 +12,9 @@
         "triggerInside": false
     }, 
     "hotkey": {
-        "hotKey": "z", 
+        "hotKey": "<tab>", 
         "modifiers": [
-            "<ctrl>", 
-            "<shift>"
+            "<ctrl>"
         ]
     }, 
     "modes": [

@@ -110,7 +110,7 @@ eval "$(jump shell)"
 
 # Exports
 # Adds inputrc file from home
-export INPUTRC=~/.inputrc
+# export INPUTRC=~/.inputrc
 
 # Custom Aliases
 # Lists files and their sizes
@@ -137,6 +137,9 @@ alias screenshot='gnome-screenshot -cae shadow'
 # Uses the word config and the .cfg directory to keep dotfiles up to date
 alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
 
+# Sets Micro as the default editor
+export EDITOR=micro
+export VISUAL=micro
 # Open Micro editor with 'm'
 alias m='micro'
 # Short for 'Micro all'
