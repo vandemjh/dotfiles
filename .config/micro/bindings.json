@@ -6,6 +6,7 @@
     "Alt-3": "NextTab",
     "Alt-4": "PreviousTab",
     "Alt-5": "DuplicateLine",
+    "Alt-6": "SkipMultiCursor",
     "Alt-s": "Save\u0026command:run prettier --write *.js,command:run prettier --write *.html,command:run prettier --write *.css,command:run prettier --write *.json",
     "CtrlBackslash": "lua:comment.comment",
     "CtrlBacktab": "PreviousTab",
@@ -13,9 +14,9 @@
     "CtrlDown": "MoveLinesDown",
     "CtrlH": "DeleteWordLeft",
     "CtrlR": "command:run make",
-    "CtrlSpace": "DuplicateLine",
+    "CtrlSpace": "Autocomplete",
     "CtrlT": "AddTab",
     "CtrlUp": "MoveLinesUp",
-    "F5": "command:run ./*",
+    "F5": "command:run",
     "MouseMiddle": "None"
 }

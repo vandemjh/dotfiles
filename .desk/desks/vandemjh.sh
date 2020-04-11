@@ -3,12 +3,16 @@
 # Description: Desk for working on my website
 # 
 
-cd ~/Desktop/Projects/vandemjh.github.io
-echo work
+goto() {
+	cd ~/Desktop/Projects/vandemjh.github.io
+	echo work
+}
 
 start() {
+	goto
 	x-terminal-emulator -e "micro app.js"
 	x-terminal-emulator -e "micro index.html"
+	live-server
 }
 
 

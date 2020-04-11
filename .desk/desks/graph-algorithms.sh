@@ -10,8 +10,23 @@ openToWork() {
 }
 
 openGiven() {
-	x-terminal-emulator -e "micro AdjacencyListGraph.java WeightedGraph.java MazeViewer.java MazePanel.java"
+	x-terminal-emulator -e "micro AdjacencyListGraph.java WeightedGraph.java MazeViewer.java MazePanel.java Graph.java"
 }
+
+
+make() {
+	javac MazeViewer.java
+}
+clean() {
+	rm *.class
+}
+run() {
+	make
+	java MazeViewer
+	clean
+}
+
 
 openToWork
 openGiven
+
