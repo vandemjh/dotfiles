@@ -128,6 +128,9 @@ alias fixkeys="xmodmap ~/.modifiedKeys.xmod"
 # Useful for copying to clipboard
 alias cb='xclip -sel clip'
 alias clip='xclip -sel clip'
+# For opening stuff easier
+alias op='xdg-open'
+# Good for jumping around the file system
 alias cdcpp='cd ~/eclipse-workspace/C++/'
 alias cdjava='cd ~/eclipse-workspace/Java/'
 alias cdpp='cd ~/Desktop/Projects/'
