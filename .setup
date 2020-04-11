@@ -12,7 +12,7 @@ sudo apt-get install xclip
 echo ===== Installing Autokey =====
 sudo apt install autokey-gtk
 
-echo ===== Installing xclip =====
+echo ===== Installing xbindkeys =====
 sudo apt-get install xbindkeys
 
 # Create projects directory
