@@ -1,8 +1,8 @@
 {
-    "usageCount": 0, 
+    "usageCount": 64, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "NextTab", 
+    "description": "fkeys", 
     "abbreviation": {
         "wordChars": "[\\w]", 
         "abbreviations": [], 
@@ -12,18 +12,13 @@
         "triggerInside": false
     }, 
     "hotkey": {
-        "hotKey": "<tab>", 
-        "modifiers": [
-            "<ctrl>", 
-            "<shift>"
-        ]
+        "hotKey": "f", 
+        "modifiers": []
     }, 
-    "modes": [
-        3
-    ], 
+    "modes": [], 
     "showInTrayMenu": false, 
     "filter": {
-        "regex": "gnome-terminal-server.Gnome-terminal", 
+        "regex": null, 
         "isRecursive": false
     }, 
     "type": "script", 
