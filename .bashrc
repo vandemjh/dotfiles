@@ -152,15 +152,9 @@ alias ma='micro *.*'
 # Uses googler with 'g'
 alias g='googler --np -n 5'
 
-# Quickly commits and pushes in git, don't worry I only use this for personal projects
+# Quickly commits in git, don't worry I only use this for personal projects
 # LANG=C.UTF-8 or any UTF-8 English locale supported by your OS may be used
-alias quick-commit="git -c color.status=false status \
-| sed -n -r -e '1,/Changes to be committed:/ d' \
--e '1,1 d' \
--e '/^Untracked files:/,$ d' \
--e 's/^\s*//' \
--e '/./p' \
-| tee | git commit -F -"
+alias quick-commit-push="git commit -am '$(date +'%A %D at %I:%M%p')' | tee; git push | tee"
 
 
 # enable programmable completion features (you don't need to enable

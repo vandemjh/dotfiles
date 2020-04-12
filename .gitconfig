@@ -3,3 +3,5 @@
 	email = jack.vandem@gmail.com
 [merge]
     tool = meld
+[alias]
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
