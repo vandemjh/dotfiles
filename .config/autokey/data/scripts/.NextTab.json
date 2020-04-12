@@ -1,8 +1,8 @@
 {
-    "usageCount": 119, 
+    "usageCount": 0, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "Redo", 
+    "description": "NextTab", 
     "abbreviation": {
         "wordChars": "[\\w]", 
         "abbreviations": [], 
@@ -12,16 +12,15 @@
         "triggerInside": false
     }, 
     "hotkey": {
-        "hotKey": "z", 
+        "hotKey": "<tab>", 
         "modifiers": [
-            "<ctrl>", 
-            "<shift>"
+            "<ctrl>"
         ]
     }, 
     "modes": [
         3
     ], 
-    "showInTrayMenu": true, 
+    "showInTrayMenu": false, 
     "filter": {
         "regex": "gnome-terminal-server.Gnome-terminal", 
         "isRecursive": false

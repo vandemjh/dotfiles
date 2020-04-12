@@ -110,7 +110,7 @@ eval "$(jump shell)"
 
 # Exports
 # Adds inputrc file from home
-export INPUTRC=~/.inputrc
+# export INPUTRC=~/.inputrc
 
 # Custom Aliases
 # Lists files and their sizes
@@ -125,8 +125,12 @@ alias ews="cd ~/eclipse-workspace"
 alias sshjmu="ssh vandemjh@stu.cs.jmu.edu"
 alias ssh361="ssh -t vandemjh@stu.cs.jmu.edu 'cd /cs/students/cs361/s20/kirkpams/submit/vandemjh/ ; bash'"
 alias fixkeys="xmodmap ~/.modifiedKeys.xmod"
-alias copy='xclip -sel clip'
-alias cp='xclip -sel clip'
+# Useful for copying to clipboard
+alias cb='xclip -sel clip'
+alias clip='xclip -sel clip'
+# For opening stuff easier
+alias op='xdg-open'
+# Good for jumping around the file system
 alias cdcpp='cd ~/eclipse-workspace/C++/'
 alias cdjava='cd ~/eclipse-workspace/Java/'
 alias cdpp='cd ~/Desktop/Projects/'
@@ -137,6 +141,9 @@ alias screenshot='gnome-screenshot -cae shadow'
 # Uses the word config and the .cfg directory to keep dotfiles up to date
 alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
 
+# Sets Micro as the default editor
+export EDITOR=micro
+export VISUAL=micro
 # Open Micro editor with 'm'
 alias m='micro'
 # Short for 'Micro all'
@@ -145,15 +152,9 @@ alias ma='micro *.*'
 # Uses googler with 'g'
 alias g='googler --np -n 5'
 
-# Quickly commits and pushes in git, don't worry I only use this for personal projects
+# Quickly commits in git, don't worry I only use this for personal projects
 # LANG=C.UTF-8 or any UTF-8 English locale supported by your OS may be used
-alias quick-commit="git -c color.status=false status \
-| sed -n -r -e '1,/Changes to be committed:/ d' \
--e '1,1 d' \
--e '/^Untracked files:/,$ d' \
--e 's/^\s*//' \
--e '/./p' \
-| tee | git commit -F -"
+alias quick-commit-push="git commit -am '$(date +'%A %D at %I:%M%p')' | tee; git push | tee"
 
 
 # enable programmable completion features (you don't need to enable
