@@ -8,6 +8,7 @@
     "Alt-5": "DuplicateLine",
     "Alt-6": "SkipMultiCursor",
     "Alt-c": "DuplicateLine",
+    "Alt-q": "Quit",
     "Alt-s": "Save\u0026command:run prettier --write *.js,command:run prettier --write *.html,command:run prettier --write *.css,command:run prettier --write *.json",
     "Alt-x": "DeleteLine",
     "CtrlBackslash": "lua:comment.comment",
