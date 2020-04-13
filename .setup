@@ -38,7 +38,7 @@ sudo apt install taskwarrior
 
 # Get desk
 echo ===== Downloading Desk ====
-sudo bash -c 'curl https://raw.githubusercontent.com/jamesob/desk/master/desk > /usr/local/bin/desk'chmod +x desk
+sudo bash -c 'curl https://raw.githubusercontent.com/jamesob/desk/master/desk > /usr/local/bin/desk'
 sudo chmod +x /usr/local/bin/desk
 cd
 
