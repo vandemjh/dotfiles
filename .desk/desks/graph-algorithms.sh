@@ -6,7 +6,7 @@
 cd ~/Desktop/CS327/graph-algorithms
 
 openToWork() {
-	x-terminal-emulator -e "micro WeightedMatrixGraph.java DisjointSet.java GraphAlgorithms.java"
+	x-terminal-emulator -e "micro WeightedMatrixGraph.java DisjointSet.java GraphAlgorithms.java Edge.java"
 }
 
 openGiven() {
