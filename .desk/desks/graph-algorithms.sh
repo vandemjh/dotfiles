@@ -6,11 +6,16 @@
 cd ~/Desktop/CS327/graph-algorithms
 
 openToWork() {
-	x-terminal-emulator -e "micro WeightedMatrixGraph.java DisjointSet.java GraphAlgorithms.java Edge.java"
+	x-terminal-emulator -e "micro WeightedMatrixGraph.java DisjointSet.java GraphAlgorithms.java Edge.java Test.java"
 }
 
 openGiven() {
 	x-terminal-emulator -e "micro AdjacencyListGraph.java WeightedGraph.java MazeViewer.java MazePanel.java Graph.java"
+}
+
+getToWork() {
+	openToWork
+	openGiven
 }
 
 
@@ -25,8 +30,9 @@ run() {
 	java MazeViewer
 	clean
 }
-
-
-openToWork
-openGiven
+test() {
+	javac Test.java
+	java Test
+	clean
+}
 
