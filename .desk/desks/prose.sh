@@ -12,5 +12,3 @@ dataLocalhost() {
 	ssh -L 5432:data.cs.jmu.edu:5432 vandemjh@stu.cs.jmu.edu
 }
 
-# cd ..
-# gnome-terminal & disown
