@@ -36,3 +36,25 @@ test() {
 	clean
 }
 
+zip() {
+	# MazePanel.java \
+	# MazeViewer.java \
+	# mkdir vandemjh-graph-algorithms
+	# cp 	{AdjacencyListGraph.java, \
+	# DisjointSet.java, \
+	# GraphAlgorithms.java, \
+	# Graph.java, \
+	# WeightedGraph.java, \
+	# WeightedMatrixGraph.java} \
+	# vandemjh-graph-algorithms
+	tar -zcvf \
+	vandemjh-graph-algorithms \
+	AdjacencyListGraph.java \
+	DisjointSet.java \
+	GraphAlgorithms.java \
+	Graph.java \
+	WeightedGraph.java \
+	WeightedMatrixGraph.java
+	echo All zipped up dude
+	
+}
