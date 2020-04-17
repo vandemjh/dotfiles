@@ -152,6 +152,9 @@ alias ma='micro *.*'
 # Uses googler with 'g'
 alias g='googler --np -n 5'
 
+# Spawn command in a new terminal
+alias xt='x-terminal-emulator -e'
+
 # Quickly commits in git, don't worry I only use this for personal projects
 # LANG=C.UTF-8 or any UTF-8 English locale supported by your OS may be used
 alias quick-commit-push="git commit -am '$(date +'%A %D at %I:%M%p')' | tee; git push | tee"
