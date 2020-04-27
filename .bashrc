@@ -141,9 +141,6 @@ alias screenshot='gnome-screenshot -cae shadow'
 # Uses the word config and the .cfg directory to keep dotfiles up to date
 alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
 
-# See what is running on what port
-alias port='sudo lsof -i:'
-
 # Sets Micro as the default editor
 export EDITOR=micro
 export VISUAL=micro
