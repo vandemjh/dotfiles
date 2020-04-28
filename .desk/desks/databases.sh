@@ -8,9 +8,9 @@ dataLocalhost() {
 }
 
 run() {
-	psql -h localhost -q postgres -U vandemjh < hw6.sql 2>&1 > hw6.txt
+	psql -h localhost -q postgres -U vandemjh < exam2.sql 2>&1 > exam2.txt
 }
 
 diff() {
-	meld hw6-sol.txt hw6.txt &
+	meld hw6-sol.txt exam2.txt &
 }
