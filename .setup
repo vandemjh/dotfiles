@@ -51,6 +51,9 @@ cd /usr/local/bin
 curl https://getmic.ro | sudo bash
 cd ~
 
+echo ===== Installing Micro Plugins =====
+micro -plugin install quoter
+
 echo ===== Install Meld =====
 sudo apt-get install meld
 
