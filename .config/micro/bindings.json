@@ -1,5 +1,5 @@
 {
-    "Alt,": "JumpToMatchingBrace",
+    "Alt-7": "JumpToMatchingBrace",
     "Alt-/": "lua:comment.comment",
     "Alt-1": "DeleteWordRight",
     "Alt-2": "lua:comment.comment",
