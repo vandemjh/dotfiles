@@ -38,6 +38,8 @@
         "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
     ],
     "pluginrepos": [],
+    "quoter": true,
+    "quoter.enable": true,
     "readonly": false,
     "rmtrailingws": false,
     "ruler": true,
