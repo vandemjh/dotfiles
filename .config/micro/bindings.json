@@ -18,6 +18,8 @@
     "CtrlDown": "MoveLinesDown",
     "CtrlH": "DeleteWordLeft",
     "CtrlR": "command:run make",
+    "CtrlShiftDown": "SpawnMultiCursorDown",
+    "CtrlShiftUp": "SpawnMultiCursorUp",
     "CtrlSpace": "Autocomplete",
     "CtrlT": "AddTab",
     "CtrlUp": "MoveLinesUp",
