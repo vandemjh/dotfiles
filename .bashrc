@@ -111,6 +111,7 @@ eval "$(jump shell)"
 # Exports
 # Adds inputrc file from home
 # export INPUTRC=~/.inputrc
+# source ~/.inputrc
 
 # Custom Aliases
 # Lists files and their sizes

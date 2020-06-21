@@ -3,6 +3,8 @@
 # programs include FTP, Bash, and GDB.
 $include /etc/inputrc
 
+set completion-ignore-case on
+
 # Add control + arrow key support
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
