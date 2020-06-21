@@ -24,5 +24,7 @@
     "CtrlT": "AddTab",
     "CtrlUp": "MoveLinesUp",
     "F5": "command:run x-terminal-emulator -x ls",
-    "MouseMiddle": "None"
+    "MouseMiddle": "None",
+    "PageUp": "None",
+    "PageDown": "None"
 }
