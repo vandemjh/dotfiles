@@ -67,10 +67,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 echo ===== Install latest version of NodeJS =====
-nvm install node
+nvm install -y node
 
 echo ===== Installing node package manager =====
-sudo apt install npm
+sudo apt install -y npm
 
 echo ===== Install Prettier =====
 sudo npm install --global prettier
