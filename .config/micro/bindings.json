@@ -1,5 +1,4 @@
 {
-    "Alt-7": "JumpToMatchingBrace",
     "Alt-/": "lua:comment.comment",
     "Alt-1": "DeleteWordRight",
     "Alt-2": "lua:comment.comment",
@@ -7,6 +6,7 @@
     "Alt-4": "PreviousTab",
     "Alt-5": "DuplicateLine",
     "Alt-6": "SkipMultiCursor",
+    "Alt-7": "JumpToMatchingBrace",
     "Alt-c": "DuplicateLine",
     "Alt-d": "DeleteLine",
     "Alt-q": "Quit",
@@ -22,9 +22,10 @@
     "CtrlShiftUp": "SpawnMultiCursorUp",
     "CtrlSpace": "Autocomplete",
     "CtrlT": "AddTab",
+    "CtrlUnderscore": "lua:comment.comment",
     "CtrlUp": "MoveLinesUp",
     "F5": "command:run x-terminal-emulator -x ls",
     "MouseMiddle": "None",
-    "PageUp": "None",
-    "PageDown": "None"
+    "PageDown": "None",
+    "PageUp": "None"
 }
