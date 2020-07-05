@@ -5,3 +5,8 @@
     tool = meld
 [alias]
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+	last = "log -1 HEAD"
+	mute = "!f() { git update-index --assume-unchanged $1; }; f"
+	unmute = "!f() { git update-index --no-assume-unchanged $1; }; f"
+	do-not-track = "!f() { echo $1 >> .git/info/exclude; }; f"
+	do-track = "!f() { sed -ie s/$1//g .git/info/exclude; }; f"
