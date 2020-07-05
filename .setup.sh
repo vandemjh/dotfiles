@@ -87,3 +87,7 @@ sudo apt-get update && sudo apt-get install spotify-client
 source ~/.bashrc
 echo ===== All done! =====
 
+echo -e "\t\tAdditional downloads:"
+echo -e "\thttps://code.visualstudio.com/docs/?dv=linux64_deb"
+echo -e "\thttps://docs.docker.com/engine/install/ubuntu/"
+echo -e "\t\tsudo groupadd docker; sudo usermod -aG docker $USER; newgrp docker"
