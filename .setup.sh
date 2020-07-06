@@ -57,6 +57,9 @@ micro -plugin install quoter
 echo ===== Install Meld =====
 sudo apt-get install meld
 
+echo ===== Install Tree =====
+sudo apt install tree
+
 echo ===== Install Jump =====
 wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb
 rm jump_0.30.1_amd64.deb
