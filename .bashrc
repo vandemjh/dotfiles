@@ -161,6 +161,8 @@ alias xt='x-terminal-emulator -e'
 alias quick-commit-push="git commit -am '$(date +'%A %D at %I:%M%p')' | tee; git push | tee"
 alias git-init="git init | tee; git add . | tee; git commit -am 'initial commit' | tee;"
 
+# Docker
+alias docker-rm-all="docker rm \$(docker ps -aq)"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
