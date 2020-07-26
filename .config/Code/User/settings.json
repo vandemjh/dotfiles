@@ -1,0 +1,11 @@
+{
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.configPath": "/home/vandemjh/.prettierrc",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
