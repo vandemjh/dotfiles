@@ -164,6 +164,9 @@ alias git-init="git init | tee; git add . | tee; git commit -am 'initial commit'
 # Docker
 alias docker-rm-all="docker rm \$(docker ps -aq)"
 
+# Start chrome no web security
+alias start-chrome-no-web-security="google-chrome --disable-web-security --user-data-dir=\"/tmp/chrome-data\""
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
