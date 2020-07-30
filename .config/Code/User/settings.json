@@ -10,5 +10,7 @@
     "window.zoomLevel": 0,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "workbench.tree.indent": 20,
+    "workbench.tree.renderIndentGuides": "always"
 }
