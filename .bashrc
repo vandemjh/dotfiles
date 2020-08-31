@@ -156,9 +156,8 @@ alias g='googler --np -n 5'
 # Spawn command in a new terminal
 alias xt='x-terminal-emulator -e'
 
-# Quickly commits in git, good personal projects
 # LANG=C.UTF-8 or any UTF-8 English locale supported by your OS may be used
-alias quick-commit-push="git commit -am '$(date +'%A %D at %I:%M%p')' | tee; git push | tee"
+
 alias git-init="git init | tee; git add . | tee; git commit -am 'initial commit' | tee;"
 
 # Docker
