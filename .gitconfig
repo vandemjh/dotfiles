@@ -4,7 +4,7 @@
 [merge]
     tool = meld
 [alias]
-	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ >> $(git rev-parse --show-toplevel)/.gitignore; echo 'gitignore created!'; }; gi"
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ >> $(git rev-parse --show-toplevel)/.gitignore; echo 'gitignore created/updated!'; }; gi"
 	last = "log -1 HEAD"
 	mute = "!f() { git update-index --assume-unchanged $1; }; f"
 	unmute = "!f() { git update-index --no-assume-unchanged $1; }; f"
