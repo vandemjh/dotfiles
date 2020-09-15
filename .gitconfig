@@ -4,6 +4,7 @@
 [merge]
     tool = meld
 [alias]
+	s="status"
 	rollback="!f() { git reset --hard HEAD~$1; }; f"
 	ca="commit -a"
 	c="commit"
