@@ -1,9 +1,11 @@
 [user]
 	name = vandemjh
-	email = jack.vandem@gmail.com
+	email = jack@jackv.dev
 [merge]
     tool = meld
 [alias]
+	c="commit"
+	co="checkout"
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ >> $(git rev-parse --show-toplevel)/.gitignore; echo 'gitignore created/updated!'; }; gi"
 	last = "log -1 HEAD"
 	mute = "!f() { git update-index --assume-unchanged $1; }; f"
