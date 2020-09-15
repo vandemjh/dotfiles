@@ -4,6 +4,7 @@
 [merge]
     tool = meld
 [alias]
+	ca="commit -a"
 	c="commit"
 	co="checkout"
 	p="push"
