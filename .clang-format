@@ -1,4 +1,5 @@
 BasedOnStyle: LLVM
-IndentWidth: 8
-UseTab: Always
-ColumnLimit: 0
+IndentWidth: 4
+UseTab: Never
+# Removes max line length
+# ColumnLimit: 0
