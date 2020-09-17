@@ -61,5 +61,9 @@
     {
         "key": "ctrl+delete",
         "command": "deleteWordPartRight"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
     }
 ]
