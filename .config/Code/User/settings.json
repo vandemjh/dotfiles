@@ -13,5 +13,8 @@
     },
     "workbench.tree.indent": 20,
     "workbench.tree.renderIndentGuides": "always",
-    "workbench.colorTheme": "Kabukichō"
+    "workbench.colorTheme": "Kabukichō",
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
