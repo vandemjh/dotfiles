@@ -1,6 +1,6 @@
 {
     "editor.minimap.enabled": false,
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "hidden",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -16,7 +16,7 @@
     "workbench.colorTheme": "Kabukichō",
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
