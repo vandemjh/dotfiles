@@ -4,18 +4,21 @@
 [merge]
     tool = meld
 [alias]
-	d="diff"
-	s="status"
-	rollback="!f() { git reset --hard HEAD~$1; }; f"
-	ca="commit -a"
-	c="commit"
-	co="checkout"
-	p="push"
-	b="branch"
-	root="rev-parse --show-toplevel"
-	diff-files="diff --name-only"
+	# List aliases
+	aliases = "config --get-regexp alias"
+	d = "diff"
+	s = "status -s"
+	rollback = "!f() { git reset --hard HEAD~$1; }; f"
+	# Short for 'commit all', -v is verbose, helps write commit msg
+	ca = "commit -av"
+	c = "commit"
+	co = "checkout"
+	p = "push"
+	b = "branch"
+	root = "rev-parse --show-toplevel"
+	diff-files = "diff --name-only"
 	ignore = "!gi() { cd ${GIT_PREFIX:-.} && curl -sL https://www.gitignore.io/api/$@ >> .gitignore; echo 'gitignore created/updated!'; }; gi"
-	ignore-file="!f() { cd ${GIT_PREFIX:-.} && for arg in $@; do echo $arg; done >> .gitignore; }; f"
+	ignore-file = "!f() { cd ${GIT_PREFIX:-.} && for arg in $@; do echo $arg; done >> .gitignore; }; f"
 	last = "log -1 HEAD"
 	mute = "!f() { cd ${GIT_PREFIX:-.} && git update-index --assume-unchanged $1; }; f"
 	unmute = "!f() { cd ${GIT_PREFIX:-.} && git update-index --no-assume-unchanged $1; }; f"
@@ -24,4 +27,23 @@
 	do-track = "!f() { sed -ie s/$1//g .git/info/exclude; }; f"
 	commit-it = "!f() { cd ${GIT_PREFIX:-.} && git commit $(find . -type f -iname $1); }; f"
 	cp-prettier = "!f() { cp -n ~/.prettierrc $(git rev-parse --show-toplevel); echo '--- Automatically adding and committing prettierrc file ---'; git add $(git rev-parse --show-toplevel)/.prettierrc; git commit $(git rev-parse --show-toplevel)/.prettierrc -m 'Added prettier configuration'; }; f"
-	
+
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	# List contributors with number of commits.
+	contributors = "shortlog --summary --numbered"
+	# Amend the currently staged files to the latest commit.
+	amend = "commit --amend --reuse-message=HEAD"
+	# Switch to a branch, creating it if necessary.
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+[init]
+	defaultBranch = "main"
+
+[branch]
+	# Show most recently changed branches first.
+	sort = -committerdate
+
+[help]
+	# Automatically correct and execute mistyped commands.
+	autocorrect = 1
