@@ -8,7 +8,7 @@
 	aliases = "config --get-regexp alias"
 	d = "diff"
 	s = "status -s"
-	rollback = "!f() { git reset --hard HEAD~$1; }; f"
+	rollback = "!f() { git reset --hard HEAD~$1 || git reset --hard HEAD; }; f"
 	# Short for 'commit all', -v is verbose, helps write commit msg
 	ca = "commit -av"
 	c = "commit"
