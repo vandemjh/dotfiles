@@ -8,7 +8,7 @@
 	aliases = "config --get-regexp alias"
 	d = "diff"
 	s = "status -s"
-	rollback = "!f() { git reset --hard HEAD~$1 || git reset --hard HEAD; }; f"
+	rollback = "stash save --keep-index --include-untracked"
 	# Short for 'commit all', -v is verbose, helps write commit msg
 	ca = "commit -av"
 	c = "commit"
