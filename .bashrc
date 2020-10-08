@@ -188,7 +188,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     GIT_PROMPT_ONLY_IN_REPO=1
     GIT_PROMPT_SHOW_UPSTREAM=1
-    GIT_PROMPT_THEME=Minimal
+    GIT_PROMPT_THEME=Jack
     source $HOME/.bash-git-prompt/gitprompt.sh
 fi
 
