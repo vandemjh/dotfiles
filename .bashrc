@@ -134,7 +134,7 @@ function set_bash_prompt() {
 	else
 		CHECK="${COLOR_GREEN}✓${COLOR_RESET}"
 	fi
-    PS1="╭╴ \[$(tput bold)\]${COLOR_YELLOW}\w${RESET} ${CHECK}\n╰╴▶ ${RESET}"
+    PS1="╭╴ \[$(tput bold)\]${COLOR_YELLOW}\w${RESET} ${CHECK}\n╰─➤ ${RESET}"
 }
 
 PROMPT_COMMAND=set_bash_prompt
