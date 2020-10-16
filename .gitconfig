@@ -47,3 +47,12 @@
 [help]
 	# Automatically correct and execute mistyped commands.
 	autocorrect = 1
+	
+[branch "master"]
+	pushRemote = no_push
+[branch "main"]
+	pushRemote = no_push
+[branch "dev"]
+	remote = origin
+[branch "jack"]
+	remote = origin
