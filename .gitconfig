@@ -20,11 +20,19 @@
 	ignore = "!gi() { cd ${GIT_PREFIX:-.} && curl -sL https://www.gitignore.io/api/$@ >> .gitignore; echo 'gitignore created/updated!'; }; gi"
 	ignore-file = "!f() { cd ${GIT_PREFIX:-.} && for arg in $@; do echo $arg; done >> .gitignore; }; f"
 	last = "log -1 HEAD"
+
+	# Useful to not show changes to frequently changed files
 	mute = "!f() { cd ${GIT_PREFIX:-.} && git update-index --assume-unchanged $1; }; f"
 	unmute = "!f() { cd ${GIT_PREFIX:-.} && git update-index --no-assume-unchanged $1; }; f"
+	# Show all muted files
+	muted = "!git ls-files -v | grep ^[a-z]"
+	
 	quick-commit-push = "!f() { git commit -am \"$(date +'%A %D at %I:%M%p')\" | tee; git push | tee; }; f"
+
+	# Stop notifying about files I do not want to track
 	do-not-track = "!f() { for arg in $@; do echo ${GIT_PREFIX}$arg >> .git/info/exclude; done; }; f"
 	do-track = "!f() { for arg in $@; do grep -v ${GIT_PREFIX}$arg .git/info/exclude > temp && mv temp .git/info/exclude; done; }; f"
+
 	commit-it = "!f() { cd ${GIT_PREFIX:-.} && git commit $(find . -type f -iname $1); }; f"
 	cp-prettier = "!f() { cp -n ~/.prettierrc $(git rev-parse --show-toplevel); echo '--- Automatically adding and committing prettierrc file ---'; git add $(git rev-parse --show-toplevel)/.prettierrc; git commit $(git rev-parse --show-toplevel)/.prettierrc -m 'Added prettier configuration'; }; f"
 
