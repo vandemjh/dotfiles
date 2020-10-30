@@ -9,6 +9,7 @@
 	d = "diff"
 	s = "status -s"
 	rollback = "stash save --keep-index --include-untracked"
+	
 	# Short for 'commit all', -v is verbose, helps write commit msg
 	ca = "commit -av"
 	c = "commit"
@@ -26,8 +27,11 @@
 	unmute = "!f() { cd ${GIT_PREFIX:-.} && git update-index --no-assume-unchanged $1; }; f"
 	# Show all muted files
 	muted = "!git ls-files -v | grep ^[a-z]"
-	
-	quick-commit-push = "!f() { git commit -am \"$(date +'%A %D at %I:%M%p')\" | tee; git push | tee; }; f"
+
+	# Commits all changed files with the datetime
+	quick-commit = "!f() { git status -s; git commit -am \"$(date +'%A %D at %I:%M%p')\" > /dev/null; }; f"
+	# Undos the last commit or the last $1 commits
+	undo = "!f() { if [ -z \"$1\" ]; then git reset --soft HEAD~1; else git reset --soft HEAD~$1; fi; }; f"
 
 	# Stop notifying about files I do not want to track
 	do-not-track = "!f() { for arg in $@; do echo ${GIT_PREFIX}$arg >> .git/info/exclude; done; }; f"
