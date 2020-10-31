@@ -28,5 +28,8 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }

@@ -38,7 +38,9 @@
 	do-track = "!f() { for arg in $@; do grep -v ${GIT_PREFIX}$arg .git/info/exclude > temp && mv temp .git/info/exclude; done; }; f"
 
 	commit-it = "!f() { cd ${GIT_PREFIX:-.} && git commit $(find . -type f -iname $1); }; f"
-	cp-prettier = "!f() { cp -n ~/.prettierrc $(git rev-parse --show-toplevel); echo '--- Automatically adding and committing prettierrc file ---'; git add $(git rev-parse --show-toplevel)/.prettierrc; git commit $(git rev-parse --show-toplevel)/.prettierrc -m 'Added prettier configuration'; }; f"
+
+	# Coppies the prettierrc file
+	cp-prettier = "!f() { cp -n ~/.prettierrc $(git rev-parse --show-toplevel); git add $(git rev-parse --show-toplevel)/.prettierrc; git commit $(git rev-parse --show-toplevel)/.prettierrc -m 'Added prettier configuration'; }; f"
 
 	# Find commits by commit message
 	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
