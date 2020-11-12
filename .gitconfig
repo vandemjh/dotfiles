@@ -44,6 +44,7 @@
 
 	# Find commits by commit message
 	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
 	# List contributors with number of commits.
 	contributors = "shortlog --summary --numbered"
 	# Amend the currently staged files to the latest commit.
