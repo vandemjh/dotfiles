@@ -28,5 +28,7 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "remote.containers.dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
+    "remote.containers.dotfiles.installCommand": "~/dotfiles/.install.sh"
 }
