@@ -4,11 +4,11 @@
 [ -z "$PS1" ] && return
 
 # Add custom sources
-source ~/.shells/misc.sh
-source ~/.shells/aliases.sh
-source ~/.shells/functions.sh
-source ~/.shells/exports.sh
-source ~/.shells/prompt.sh
+source ./.shells/misc.sh
+source ./.shells/aliases.sh
+source ./.shells/functions.sh
+source ./.shells/exports.sh
+source ./.shells/prompt.sh
 
 # Bash-git-prompt info
 # Install at https://github.com/magicmonty/bash-git-prompt

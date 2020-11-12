@@ -1,9 +1,13 @@
 # Jack Vandemeulebroecke
-echo ===== Installing Git =====
-sudo apt install git
 
 echo ===== Updating packages =====
 sudo apt-get update
+
+echo ===== Installing sudo =====
+apt install sudo
+
+echo ===== Installing Git =====
+sudo apt install git
 
 echo ===== Installing xclip =====
 sudo apt-get install xclip
@@ -22,34 +26,13 @@ sudo apt-get install xbindkeys
 echo ===== Creating project directory =====
 mkdir ~/Desktop/Projects
 
-echo ===== Updating Git repos in Projects Directory  =====
-cd ~/Desktop/Projects
-find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull
-cd ~
-
 # Download Git bash prompt
 echo ===== Downloading Git-bash-prompt =====
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
-# Get googler
-echo ===== Downloading googler =====
-sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v4.0/googler && sudo chmod +x /usr/local/bin/googler
-
-# Get taskwarrior
-echo ===== Downloading taskwarrior ====
-sudo apt install taskwarrior
-
-# Get desk
-echo ===== Downloading Desk ====
-sudo bash -c 'curl https://raw.githubusercontent.com/jamesob/desk/master/desk > /usr/local/bin/desk'
-sudo chmod +x /usr/local/bin/desk
-cd
-
 # Install Micro
 echo ===== Installing Micro Editor =====
-cd /usr/local/bin
-curl https://getmic.ro | sudo bash
-cd ~
+cd /usr/local/bin; curl https://getmic.ro | sudo bash; cd ~
 
 echo ===== Installing Micro Plugins =====
 micro -plugin install quoter
