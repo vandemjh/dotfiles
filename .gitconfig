@@ -41,7 +41,8 @@
 	cp-prettier = "!f() { cp -n ~/.prettierrc $(git rev-parse --show-toplevel); echo '--- Automatically adding and committing prettierrc file ---'; git add $(git rev-parse --show-toplevel)/.prettierrc; git commit $(git rev-parse --show-toplevel)/.prettierrc -m 'Added prettier configuration'; }; f"
 
 	# Find commits by commit message
-	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
 	# List contributors with number of commits.
 	contributors = "shortlog --summary --numbered"
 	# Amend the currently staged files to the latest commit.
