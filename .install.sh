@@ -1,30 +1,16 @@
 # Jack Vandemeulebroecke
 
-echo ===== Updating packages =====
-sudo apt-get update
-
 echo ===== Installing sudo =====
 apt install sudo
 
+echo ===== Updating packages =====
+sudo apt-get -y update
+
 echo ===== Installing Git =====
-sudo apt install git
+sudo apt install -y git
 
 echo ===== Installing xclip =====
-sudo apt-get install xclip
-
-# Opted for autokey
-# echo ===== Installing xdotool =====
-# sudo apt-get install xdotool
-
-echo ===== Installing Autokey =====
-sudo apt install autokey-gtk
-
-echo ===== Installing xbindkeys =====
-sudo apt-get install xbindkeys
-
-# Create projects directory
-echo ===== Creating project directory =====
-mkdir ~/Desktop/Projects
+sudo apt-get install -y xclip
 
 # Download Git bash prompt
 echo ===== Downloading Git-bash-prompt =====
@@ -37,11 +23,21 @@ cd /usr/local/bin; curl https://getmic.ro | sudo bash; cd ~
 echo ===== Installing Micro Plugins =====
 micro -plugin install quoter
 
+if [ "$1" != "--verbose" ]; then
+   exit 0;
+fi
+
+echo ===== Installing Autokey =====
+sudo apt install -y autokey-gtk
+
+echo ===== Installing xbindkeys =====
+sudo apt-get install -y xbindkeys
+
 echo ===== Install Meld =====
-sudo apt-get install meld
+sudo apt-get install -y meld
 
 echo ===== Install Tree =====
-sudo apt install tree
+sudo apt install -y tree
 
 echo ===== Install Jump =====
 wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb
