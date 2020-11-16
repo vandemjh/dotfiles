@@ -1,25 +1,31 @@
 {
-    "editor.minimap.enabled": false,
-    "window.menuBarVisibility": "hidden",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "window.zoomLevel": 0,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.tree.indent": 20,
-    "workbench.tree.renderIndentGuides": "always",
-    "workbench.colorTheme": "Kabukichō",
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "remote.containers.defaultExtensions": [
+        "esbenp.prettier-vscode",
+    ],
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "hidden",
+    "workbench.tree.indent": 20,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.colorTheme": "Kabukichō",
     "editor.columnSelection": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -29,7 +35,6 @@
         "**/.settings": true,
         "**/.factorypath": true
     },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    "remote.containers.dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
+    "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r $HOME/dotfiles/. $HOME; $HOME/.install.sh; source $HOME/.bashrc"
 }

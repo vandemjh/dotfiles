@@ -1,64 +1,43 @@
 # Jack Vandemeulebroecke
-echo ===== Installing Git =====
-sudo apt install git
+
+echo ===== Installing sudo =====
+apt install sudo
 
 echo ===== Updating packages =====
-sudo apt-get update
+sudo apt-get -y update
+
+echo ===== Installing Git =====
+sudo apt install -y git
 
 echo ===== Installing xclip =====
-sudo apt-get install xclip
+sudo apt-get install -y xclip
 
-# Opted for autokey
-# echo ===== Installing xdotool =====
-# sudo apt-get install xdotool
+# Install Micro
+echo ===== Installing Micro Editor =====
+cd /usr/local/bin; curl https://getmic.ro | sudo bash; cd ~
 
-echo ===== Installing Autokey =====
-sudo apt install autokey-gtk
+echo ===== Installing Micro Plugins =====
+micro -plugin install quoter
 
-echo ===== Installing xbindkeys =====
-sudo apt-get install xbindkeys
-
-# Create projects directory
-echo ===== Creating project directory =====
-mkdir ~/Desktop/Projects
-
-echo ===== Updating Git repos in Projects Directory  =====
-cd ~/Desktop/Projects
-find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull
-cd ~
+if [ "$1" != "--verbose" ]; then
+   exit 0;
+fi
 
 # Download Git bash prompt
 echo ===== Downloading Git-bash-prompt =====
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
-# Get googler
-echo ===== Downloading googler =====
-sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v4.0/googler && sudo chmod +x /usr/local/bin/googler
+echo ===== Installing Autokey =====
+sudo apt install -y autokey-gtk
 
-# Get taskwarrior
-echo ===== Downloading taskwarrior ====
-sudo apt install taskwarrior
-
-# Get desk
-echo ===== Downloading Desk ====
-sudo bash -c 'curl https://raw.githubusercontent.com/jamesob/desk/master/desk > /usr/local/bin/desk'
-sudo chmod +x /usr/local/bin/desk
-cd
-
-# Install Micro
-echo ===== Installing Micro Editor =====
-cd /usr/local/bin
-curl https://getmic.ro | sudo bash
-cd ~
-
-echo ===== Installing Micro Plugins =====
-micro -plugin install quoter
+echo ===== Installing xbindkeys =====
+sudo apt-get install -y xbindkeys
 
 echo ===== Install Meld =====
-sudo apt-get install meld
+sudo apt-get install -y meld
 
 echo ===== Install Tree =====
-sudo apt install tree
+sudo apt install -y tree
 
 echo ===== Install Jump =====
 wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb

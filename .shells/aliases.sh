@@ -5,6 +5,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias lsa='ls -a'
 
+# Useful for testing .bashrc
+alias gogo='source $HOME/.bashrc'
+
 # Open Micro editor with 'm'
 alias m='micro'
 
