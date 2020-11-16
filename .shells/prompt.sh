@@ -1,6 +1,9 @@
 # Colors
 export FORMAT_BOLD='\[$(tput bold)\]'
+export FORMAT_ITALICS='\[$(tput sitm)\]'
 export FORMAT_RESET='\[$(tput sgr0)\]'
+export FORMAT_LIGHT_BLUE_HIGHLIGHT='\[$(tput setab 12)\]'
+export FORMAT_LIGHT_LIGHT_PURPLE_HIGHLIGHT='\[$(tput setab 5)\]'
 export COLOR_RESET='\e[0m'
 export COLOR_WHITE='\e[1;37m'
 export COLOR_BLACK='\e[0;30m'
@@ -13,23 +16,81 @@ export COLOR_LIGHT_CYAN='\e[1;36m'
 export COLOR_RED='\e[0;31m'
 export COLOR_LIGHT_RED='\e[1;31m'
 export COLOR_PURPLE='\e[0;35m'
-export COLOR_LIGHT_PURPLE='\e[1;35m'
+export COLOR_LIGHT_MAGENTA='\e[1;95m'
+export COLOR_MAGENTA='\e[1;35m'
 export COLOR_BROWN='\e[0;33m'
 export COLOR_YELLOW='\e[1;33m'
 export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
+export RESET_ALL='\[$(tput sgr0)\]\e[0m'
+
+function smart_space() {
+	if [ "$1" != "" ]; then
+		echo " $1";
+	fi
+}
 
 function set_bash_prompt() {
 	local CUR_EXIT=$?
-	local CHECK=""
-	local HEADER=`echo -en "\033]0;$(whoami)@$(hostname):/~/$(pwd|cut -d "/" -f 4-100)\a"`
-	
-	if [ $CUR_EXIT -ne 0 ]; then
-		CHECK="${COLOR_RED}✗${COLOR_RESET}"
+	local GIT_BUILDER="";
+	local HEADER="";
+	local CORE="${FORMAT_BOLD}${COLOR_YELLOW} \w${RESET_ALL}"
+	local IS_INSIDE_GIT_DIR=`git rev-parse --show-toplevel 2> /dev/null`
+	if [ "$IS_INSIDE_GIT_DIR" != "" ]; then 
+		local GIT_DIR=`basename $(git rev-parse --show-toplevel)`
+		local GIT_FULL_DIR=$GIT_DIR/`git rev-parse --show-prefix`
+		GIT_FULL_DIR="${GIT_FULL_DIR%/}"
+		local BLOCKY_START="${COLOR_LIGHT_BLUE}░▒▓${RESET_ALL}"
+		local BLOCKY_END="${COLOR_LIGHT_BLUE}▓▒░${RESET_ALL}"
+		# local BLOCKY_START="${COLOR_LIGHT_BLUE}▁▂▃▄▅▆▇█${RESET_ALL}"
+		local GIT_BRANCH="`git symbolic-ref --short HEAD`"
+		local GIT_BRANCH_FORMATTED="${COLOR_LIGHT_CYAN}$GIT_BRANCH${RESET_ALL}"
+		local GIT_FULL_DIR_FORMATTED_START="$BLOCKY_START${FORMAT_LIGHT_BLUE_HIGHLIGHT}${COLOR_YELLOW}${FORMAT_BOLD}$GIT_FULL_DIR"
+		local GIT_FULL_DIR_FORMATTED_END="${COLOR_LIGHT_BLUE}${FORMAT_LIGHT_LIGHT_PURPLE_HIGHLIGHT}${RESET_ALL}$BLOCKY_END"
+		local GIT_STASHES=""
+		local NUMBER_OF_STASHES="`git stash list | wc -l`"
+		if [ "$NUMBER_OF_STASHES" != "" ] && [ "$NUMBER_OF_STASHES" != "0" ]; then
+			GIT_STASHES="${COLOR_MAGENTA}⚑`git stash list | wc -l`${RESET_ALL}"
+		fi
+		local GIT_REMOTE=""
+		if [ "`git remote show`" != "" ]; then
+			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream}`"
+			GIT_REMOTE="$GIT_REMOTE${RESET_ALL}${COLOR_WHITE}❱${RESET_ALL}"
+		fi
+		local GIT_NEW_FILES=""
+		local NUMBER_OF_NEW_FILES="`git diff --cached --numstat | wc -l`"
+		if [ "$NUMBER_OF_NEW_FILES" != "" ] && [ "$NUMBER_OF_NEW_FILES" != "0" ]; then
+			GIT_NEW_FILES="${COLOR_LIGHT_GREEN}+`git diff --cached --numstat | wc -l`${RESET_ALL}"
+		fi
+		local NUMBER_OF_CHANGED_FILES="`git diff --name-only`"
+		local GIT_CHANGED_FILES=""
+		if [ "$NUMBER_OF_CHANGED_FILES" != "" ] && [ "$NUMBER_OF_CHANGED_FILES" != "0" ]; then
+			GIT_CHANGED_FILES="${COLOR_BROWN}Δ`git diff --name-only | wc -l`${RESET_ALL}"
+		fi
+		GIT_STASHES="`smart_space "$GIT_STASHES"`"
+		GIT_BRANCH_FORMATTED="`smart_space "$GIT_BRANCH_FORMATTED"`"
+		GIT_CHANGED_FILES="`smart_space "$GIT_CHANGED_FILES"`"
+		GIT_NEW_FILES="`smart_space "$GIT_NEW_FILES"`"
+		GIT_REMOTE="`smart_space "$GIT_REMOTE"`"
+		GIT_BUILDER=$GIT_BUILDER$GIT_FULL_DIR_FORMATTED_START
+		GIT_BUILDER=$GIT_BUILDER$GIT_FULL_DIR_FORMATTED_END
+		GIT_BUILDER=$GIT_BUILDER$GIT_BRANCH_FORMATTED
+		GIT_BUILDER=$GIT_BUILDER$GIT_STASHES
+		GIT_BUILDER=$GIT_BUILDER$GIT_CHANGED_FILES
+		GIT_BUILDER=$GIT_BUILDER$GIT_NEW_FILES
+		GIT_BUILDER=$GIT_BUILDER$GIT_REMOTE
+		HEADER=`echo -en "\033]0;$GIT_FULL_DIR\a"`
+		CORE=$GIT_BUILDER
 	else
-		CHECK="${COLOR_GREEN}✓${COLOR_RESET}"
+		HEADER=`echo -en "\033]0;$(whoami)@$(hostname):/~/$(pwd|cut -d "/" -f 4-100)\a"`
 	fi
-    PS1="${HEADER}╭╴ ${FORMAT_BOLD}${COLOR_YELLOW}\w${RESET} ${CHECK}\n╰─➤ ${RESET}"
+	local CHECK=""
+	if [ $CUR_EXIT -ne 0 ]; then
+		CHECK="${COLOR_RED}✗${RESET_ALL}"
+	else
+		CHECK="${COLOR_GREEN}✓${RESET_ALL}"
+	fi
+    PS1="${HEADER}╭╴${CORE} ${CHECK}\n╰─➤ ${RESET_ALL}"
 }
 
 export PROMPT_COMMAND=set_bash_prompt
