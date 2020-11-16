@@ -50,7 +50,7 @@ function set_bash_prompt() {
 		local GIT_STASHES=""
 		local NUMBER_OF_STASHES="`git stash list | wc -l`"
 		if [ "$NUMBER_OF_STASHES" != "" ] && [ "$NUMBER_OF_STASHES" != "0" ]; then
-			GIT_STASHES="${COLOR_MAGENTA}⚑`git stash list | wc -l`${RESET_ALL}"
+			GIT_STASHES="${COLOR_MAGENTA}⚑$NUMBER_OF_STASHES${RESET_ALL}"
 		fi
 		local GIT_REMOTE=""
 		if [ "`git remote show`" != "" ]; then
@@ -58,14 +58,14 @@ function set_bash_prompt() {
 			GIT_REMOTE="$GIT_REMOTE${RESET_ALL}${COLOR_WHITE}❱${RESET_ALL}"
 		fi
 		local GIT_NEW_FILES=""
-		local NUMBER_OF_NEW_FILES="`git diff --cached --numstat | wc -l`"
+		local NUMBER_OF_NEW_FILES="`git ls-files --others --exclude-standard | wc -l`"
 		if [ "$NUMBER_OF_NEW_FILES" != "" ] && [ "$NUMBER_OF_NEW_FILES" != "0" ]; then
-			GIT_NEW_FILES="${COLOR_LIGHT_GREEN}+`git diff --cached --numstat | wc -l`${RESET_ALL}"
+			GIT_NEW_FILES="${COLOR_LIGHT_GREEN}+$NUMBER_OF_NEW_FILES${RESET_ALL}"
 		fi
 		local NUMBER_OF_CHANGED_FILES="`git diff --name-only`"
 		local GIT_CHANGED_FILES=""
 		if [ "$NUMBER_OF_CHANGED_FILES" != "" ] && [ "$NUMBER_OF_CHANGED_FILES" != "0" ]; then
-			GIT_CHANGED_FILES="${COLOR_BROWN}Δ`git diff --name-only | wc -l`${RESET_ALL}"
+			GIT_CHANGED_FILES="${COLOR_BROWN}Δ$NUMBER_OF_CHANGED_FILES${RESET_ALL}"
 		fi
 		GIT_STASHES="`smart_space "$GIT_STASHES"`"
 		GIT_BRANCH_FORMATTED="`smart_space "$GIT_BRANCH_FORMATTED"`"
@@ -75,10 +75,10 @@ function set_bash_prompt() {
 		GIT_BUILDER=$GIT_BUILDER$GIT_FULL_DIR_FORMATTED_START
 		GIT_BUILDER=$GIT_BUILDER$GIT_FULL_DIR_FORMATTED_END
 		GIT_BUILDER=$GIT_BUILDER$GIT_BRANCH_FORMATTED
+		GIT_BUILDER=$GIT_BUILDER$GIT_REMOTE
 		GIT_BUILDER=$GIT_BUILDER$GIT_STASHES
 		GIT_BUILDER=$GIT_BUILDER$GIT_CHANGED_FILES
 		GIT_BUILDER=$GIT_BUILDER$GIT_NEW_FILES
-		GIT_BUILDER=$GIT_BUILDER$GIT_REMOTE
 		HEADER=`echo -en "\033]0;$GIT_FULL_DIR\a"`
 		CORE=$GIT_BUILDER
 	else
