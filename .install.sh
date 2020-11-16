@@ -12,10 +12,6 @@ sudo apt install -y git
 echo ===== Installing xclip =====
 sudo apt-get install -y xclip
 
-# Download Git bash prompt
-echo ===== Downloading Git-bash-prompt =====
-git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
-
 # Install Micro
 echo ===== Installing Micro Editor =====
 cd /usr/local/bin; curl https://getmic.ro | sudo bash; cd ~
@@ -26,6 +22,10 @@ micro -plugin install quoter
 if [ "$1" != "--verbose" ]; then
    exit 0;
 fi
+
+# Download Git bash prompt
+echo ===== Downloading Git-bash-prompt =====
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
 echo ===== Installing Autokey =====
 sudo apt install -y autokey-gtk
