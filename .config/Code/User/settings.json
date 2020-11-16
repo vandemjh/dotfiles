@@ -36,5 +36,5 @@
         "**/.factorypath": true
     },
     "remote.containers.dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
-    "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r ~/dotfiles/. ~; chmod +x /~/.install.sh; ./~/.install.sh; source ~/.bashrc"
+    "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r $HOME/dotfiles/. $HOME; chmod +x /$HOME/.install.sh; ./$HOME/.install.sh; source $HOME/.bashrc"
 }
