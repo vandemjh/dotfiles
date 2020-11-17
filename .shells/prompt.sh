@@ -30,6 +30,9 @@ function smart_space() {
 	fi
 }
 
+# Add option to show time in prompt
+export PROMPT_SHOW_TIME="true"
+
 # Cool symbols for later...
 # ⎇
 # ▁▂▃▄▅▆▇█
@@ -43,8 +46,8 @@ function set_bash_prompt() {
 		local GIT_DIR=`basename $(git rev-parse --show-toplevel)`
 		local GIT_FULL_DIR=$GIT_DIR/`git rev-parse --show-prefix`
 		GIT_FULL_DIR="${GIT_FULL_DIR%/}"
-		local BLOCKY_START="${COLOR_LIGHT_BLUE}░▒▓${RESET_ALL}"
-		local BLOCKY_END="${COLOR_LIGHT_BLUE}▓▒░${RESET_ALL}"
+		local BLOCKY_START="┤${COLOR_LIGHT_BLUE}░▒▓${RESET_ALL}"
+		local BLOCKY_END="${COLOR_LIGHT_BLUE}▓▒░${RESET_ALL}├╯"
 		local GIT_BRANCH="`git symbolic-ref --short HEAD`"
 		local GIT_BRANCH_FORMATTED="${COLOR_LIGHT_CYAN}${FORMAT_BOLD}$GIT_BRANCH${RESET_ALL}"
 		local GIT_FULL_DIR_FORMATTED_START="$BLOCKY_START${FORMAT_LIGHT_BLUE_HIGHLIGHT}${COLOR_YELLOW}${FORMAT_BOLD}$GIT_FULL_DIR"
@@ -55,7 +58,7 @@ function set_bash_prompt() {
 			GIT_STASHES="${COLOR_MAGENTA}⚑$NUMBER_OF_STASHES${RESET_ALL}"
 		fi
 		local GIT_REMOTE=""
-		if [ "`git remote show`" != "" ]; then
+		if [ "`git remote show`" != "" ] && [ "`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} &> /dev/null`" ]; then
 			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream}`"
 			GIT_REMOTE="$GIT_REMOTE${RESET_ALL}${COLOR_WHITE}❱${RESET_ALL}"
 		fi
@@ -96,11 +99,11 @@ function set_bash_prompt() {
 		elif [ $CUR_EXIT -eq "139" ]; then
 			EXIT_TEXT=" SIGV"
 		fi
-		CHECK="${COLOR_RED}✗$EXIT_TEXT${RESET_ALL}"
+		CHECK="${COLOR_RED}✘$EXIT_TEXT${RESET_ALL}"
 	else
-		CHECK="${COLOR_GREEN}✓${RESET_ALL}"
+		CHECK="${COLOR_GREEN}✔${RESET_ALL}"
 	fi
-    PS1="${HEADER}\[╭╴\]${CORE} ${CHECK}\n\[╰─ᐅ \]${RESET_ALL}"
+    PS1="${HEADER}\[╭\]${CORE} ${CHECK}\n\[╰─ᐅ \]${RESET_ALL}"
 }
 
 export PROMPT_COMMAND=set_bash_prompt
