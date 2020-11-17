@@ -24,7 +24,7 @@ export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 export RESET_ALL='\[$(tput sgr0)\]\e[0m'
 
-function smart_space() {
+function addSpace() {
 	if [ "$1" != "" ]; then
 		echo " $1";
 	fi
@@ -86,20 +86,25 @@ function set_bash_prompt() {
 			fi
 		fi
 		local GIT_COMMITS_BEHIND_AHEAD=$GIT_COMMITS_BEHIND$GIT_COMMITS_AHEAD
-		GIT_STASHES="`smart_space "$GIT_STASHES"`"
-		GIT_BRANCH_FORMATTED="`smart_space "$GIT_BRANCH_FORMATTED"`"
-		GIT_CHANGED_FILES="`smart_space "$GIT_CHANGED_FILES"`"
-		GIT_NEW_FILES="`smart_space "$GIT_NEW_FILES"`"
-		GIT_REMOTE="`smart_space "$GIT_REMOTE"`"
-		GIT_COMMITS_BEHIND_AHEAD="`smart_space "$GIT_COMMITS_BEHIND_AHEAD"`"
+		GIT_STASHES="`addSpace "$GIT_STASHES"`"
+		GIT_BRANCH_FORMATTED="`addSpace "$GIT_BRANCH_FORMATTED"`"
+		GIT_CHANGED_FILES="`addSpace "$GIT_CHANGED_FILES"`"
+		GIT_NEW_FILES="`addSpace "$GIT_NEW_FILES"`"
+		GIT_REMOTE="`addSpace "$GIT_REMOTE"`"
+		GIT_COMMITS_BEHIND_AHEAD="`addSpace "$GIT_COMMITS_BEHIND_AHEAD"`"
 		GIT_BUILDER=$GIT_BUILDER$GIT_FULL_DIR_FORMATTED_START
 		GIT_BUILDER=$GIT_BUILDER$GIT_FULL_DIR_FORMATTED_END
 		GIT_BUILDER=$GIT_BUILDER$GIT_BRANCH_FORMATTED
 		GIT_BUILDER=$GIT_BUILDER$GIT_REMOTE
+		GIT_CHECK_CHANGES_EMOJI="$GIT_BUILDER"
 		GIT_BUILDER=$GIT_BUILDER$GIT_STASHES
 		GIT_BUILDER=$GIT_BUILDER$GIT_CHANGED_FILES
 		GIT_BUILDER=$GIT_BUILDER$GIT_NEW_FILES
 		GIT_BUILDER=$GIT_BUILDER$GIT_COMMITS_BEHIND_AHEAD
+		# Adds an emoji if there are no changes, stashes, or commits behind / ahead
+		if [ "$GIT_CHECK_CHANGES_EMOJI" == "$GIT_BUILDER" ]; then
+			GIT_BUILDER="$GIT_BUILDER`addSpace $(emoji "$GIT_BUILDER")`"
+		fi
 		HEADER=`echo -en "\033]0;$GIT_FULL_DIR\a"`
 		CORE=$GIT_BUILDER
 	else
@@ -122,5 +127,120 @@ function set_bash_prompt() {
     PS1="${HEADER}\[╭\]${CORE} ${CHECK}\n\[╰─ᐅ \]${RESET_ALL}"
 }
 
-export PROMPT_COMMAND=set_bash_prompt
+# I can add more emojis here
+function emoji() {
+	local EMOJIS=(
+		😎
+		😀
+		😃
+		😁
+		😆
+		💥
+		💯
+		🍇
+		🍈
+		🍉
+		🍊
+		🍋
+		🍌
+		🍍
+		🥭
+		🍎
+		🍏
+		🍐
+		🍑
+		🍒
+		🍓
+		🥝
+		🍅
+		🥥
+		🥑
+		🍆
+		🥔
+		🥕
+		🌽
+		🌶️ 
+		🥒
+		🥬
+		🥦
+		🍄
+		🥜
+		🌰
+		🍞
+		🥐
+		🥖
+		🥨
+		🥯
+		🥞
+		🧀
+		🍖
+		🍗
+		🥩
+		🥓
+		🍔
+		🍟
+		🍕
+		🌭
+		🥪
+		🌮
+		🌯
+		🥙
+		🥚
+		🍳
+		🥘
+		🍲
+		🥣
+		🥗
+		🍿
+		🧂
+		🥫
+		🍱
+		🍘
+		🍙
+		🍚
+		🍛
+		🍜
+		🍝
+		🍠
+		🍢
+		🍣
+		🍤
+		🍥
+		🥮
+		🍡
+		🥟
+		🥠
+		🥡
+		🍦
+		🍧
+		🍨
+		🍩
+		🍪
+		🎂
+		🍰
+		🧁
+		🥧
+		🍫
+		🍬
+		🍭
+		🍮
+		🍯
+		🍼
+		🥛
+		☕
+		🍵
+		🍶
+		🍾
+		🍷
+		🍸
+		🍹
+		🍺
+		🍻
+		🥂
+		🥃
+		🥤 
+	);
+	echo "${EMOJIS[$RANDOM % ${#EMOJIS[@]}]}"
+}
 
+export PROMPT_COMMAND=set_bash_prompt
