@@ -30,6 +30,9 @@ function smart_space() {
 	fi
 }
 
+# Cool symbols for later...
+# ⎇
+# ▁▂▃▄▅▆▇█
 function set_bash_prompt() {
 	local CUR_EXIT=$?
 	local GIT_BUILDER="";
@@ -42,9 +45,8 @@ function set_bash_prompt() {
 		GIT_FULL_DIR="${GIT_FULL_DIR%/}"
 		local BLOCKY_START="${COLOR_LIGHT_BLUE}░▒▓${RESET_ALL}"
 		local BLOCKY_END="${COLOR_LIGHT_BLUE}▓▒░${RESET_ALL}"
-		# local BLOCKY_START="${COLOR_LIGHT_BLUE}▁▂▃▄▅▆▇█${RESET_ALL}"
 		local GIT_BRANCH="`git symbolic-ref --short HEAD`"
-		local GIT_BRANCH_FORMATTED="${COLOR_LIGHT_CYAN}$GIT_BRANCH${RESET_ALL}"
+		local GIT_BRANCH_FORMATTED="${COLOR_LIGHT_CYAN}${FORMAT_BOLD}$GIT_BRANCH${RESET_ALL}"
 		local GIT_FULL_DIR_FORMATTED_START="$BLOCKY_START${FORMAT_LIGHT_BLUE_HIGHLIGHT}${COLOR_YELLOW}${FORMAT_BOLD}$GIT_FULL_DIR"
 		local GIT_FULL_DIR_FORMATTED_END="${COLOR_LIGHT_BLUE}${FORMAT_LIGHT_LIGHT_PURPLE_HIGHLIGHT}${RESET_ALL}$BLOCKY_END"
 		local GIT_STASHES=""
@@ -90,7 +92,7 @@ function set_bash_prompt() {
 	else
 		CHECK="${COLOR_GREEN}✓${RESET_ALL}"
 	fi
-    PS1="${HEADER}╭╴${CORE} ${CHECK}\n╰─➤ ${RESET_ALL}"
+    PS1="${HEADER}\[╭╴\]${CORE} ${CHECK}\n\[╰─ᐅ \]${RESET_ALL}"
 }
 
 export PROMPT_COMMAND=set_bash_prompt
