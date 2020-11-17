@@ -64,7 +64,7 @@ function set_bash_prompt() {
 		if [ "$NUMBER_OF_NEW_FILES" != "" ] && [ "$NUMBER_OF_NEW_FILES" != "0" ]; then
 			GIT_NEW_FILES="${COLOR_LIGHT_GREEN}+$NUMBER_OF_NEW_FILES${RESET_ALL}"
 		fi
-		local NUMBER_OF_CHANGED_FILES="`git diff --name-only`"
+		local NUMBER_OF_CHANGED_FILES="`git diff --name-only | wc -l`"
 		local GIT_CHANGED_FILES=""
 		if [ "$NUMBER_OF_CHANGED_FILES" != "" ] && [ "$NUMBER_OF_CHANGED_FILES" != "0" ]; then
 			GIT_CHANGED_FILES="${COLOR_BROWN}Δ$NUMBER_OF_CHANGED_FILES${RESET_ALL}"
@@ -88,7 +88,15 @@ function set_bash_prompt() {
 	fi
 	local CHECK=""
 	if [ $CUR_EXIT -ne 0 ]; then
-		CHECK="${COLOR_RED}✗${RESET_ALL}"
+		local EXIT_TEXT="-$CUR_EXIT"
+		if [ $CUR_EXIT -eq "127" ]; then
+			EXIT_TEXT=" Not found"
+		elif [ $CUR_EXIT -eq "1" ]; then
+			EXIT_TEXT=" Error"
+		elif [ $CUR_EXIT -eq "139" ]; then
+			EXIT_TEXT=" SIGV"
+		fi
+		CHECK="${COLOR_RED}✗$EXIT_TEXT${RESET_ALL}"
 	else
 		CHECK="${COLOR_GREEN}✓${RESET_ALL}"
 	fi
