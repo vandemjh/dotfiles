@@ -47,7 +47,7 @@ function set_bash_prompt() {
 		local GIT_FULL_DIR=$GIT_DIR/`git rev-parse --show-prefix`
 		GIT_FULL_DIR="${GIT_FULL_DIR%/}"
 		local BLOCKY_START="┤${COLOR_LIGHT_BLUE}░▒▓${RESET_ALL}"
-		local BLOCKY_END="${COLOR_LIGHT_BLUE}▓▒░${RESET_ALL}├╯"
+		local BLOCKY_END="${COLOR_LIGHT_BLUE}▓▒░${RESET_ALL}"
 		local GIT_BRANCH="`git symbolic-ref --short HEAD`"
 		local GIT_BRANCH_FORMATTED="${COLOR_LIGHT_CYAN}${FORMAT_BOLD}$GIT_BRANCH${RESET_ALL}"
 		local GIT_FULL_DIR_FORMATTED_START="$BLOCKY_START${FORMAT_LIGHT_BLUE_HIGHLIGHT}${COLOR_YELLOW}${FORMAT_BOLD}$GIT_FULL_DIR"
@@ -58,7 +58,8 @@ function set_bash_prompt() {
 			GIT_STASHES="${COLOR_MAGENTA}⚑$NUMBER_OF_STASHES${RESET_ALL}"
 		fi
 		local GIT_REMOTE=""
-		if [ "`git remote show`" != "" ] && [ "`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} &> /dev/null`" ]; then
+		local IS_UPSTRAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
+		if [ "`git remote show`" != "" ] && [ "$IS_UPSTRAM" != "" ]; then
 			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream}`"
 			GIT_REMOTE="$GIT_REMOTE${RESET_ALL}${COLOR_WHITE}❱${RESET_ALL}"
 		fi
