@@ -89,5 +89,14 @@
     {
         "key": "shift+alt+a",
         "command": "editor.action.toggleColumnSelection"
+    },
+    {
+        "key": "alt+up",
+        "command": "editor.action.copyLinesUpAction"
+    },
+    {
+        "key": "alt+down",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]
