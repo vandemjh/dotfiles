@@ -60,7 +60,7 @@ function set_bash_prompt() {
 		local GIT_REMOTE=""
 		local IS_UPSTRAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
 		if [ "`git remote show`" != "" ] && [ "$IS_UPSTRAM" != "" ]; then
-			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream}`"
+			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`"
 			GIT_REMOTE="$GIT_REMOTE${RESET_ALL}${COLOR_WHITE}❱${RESET_ALL}"
 		fi
 		local GIT_NEW_FILES=""
@@ -76,11 +76,11 @@ function set_bash_prompt() {
 		local GIT_COMMITS_AHEAD=""
 		local GIT_COMMITS_BEHIND=""
 		if [ "$IS_UPSTRAM" != "" ]; then
-			local GIT_NUMBER_OF_COMMITS_AHEAD="`git rev-list --count origin/$GIT_BRANCH..$GIT_BRANCH`"
+			local GIT_NUMBER_OF_COMMITS_AHEAD="`git rev-list --count origin/$GIT_BRANCH..$GIT_BRANCH 2> /dev/null`"
 			if [ "$GIT_NUMBER_OF_COMMITS_AHEAD" != "" ] && [ "$GIT_NUMBER_OF_COMMITS_AHEAD" != "0" ]; then
 				GIT_COMMITS_AHEAD="↑$GIT_NUMBER_OF_COMMITS_AHEAD"
 			fi
-			local GIT_NUMBER_OF_COMMITS_BEHIND="`git rev-list --count $GIT_BRANCH..origin/$GIT_BRANCH`"
+			local GIT_NUMBER_OF_COMMITS_BEHIND="`git rev-list --count $GIT_BRANCH..origin/$GIT_BRANCH 2> /dev/null`"
 			if [ "$GIT_NUMBER_OF_COMMITS_BEHIND" != "" ] && [ "$GIT_NUMBER_OF_COMMITS_BEHIND" != "0" ]; then
 				GIT_COMMITS_BEHIND="↓$GIT_NUMBER_OF_COMMITS_BEHIND"
 			fi
