@@ -18,11 +18,19 @@ function extract () {
    fi
 }
 
+function compress() {
+	if [ "$2" != "" ]; then		
+		tar -czf "$2.tar" "$1"
+	else
+		tar -czf "$1.tar" "$1"
+	fi
+}
+
 function up()
 {
   for i in `seq 1 $1`;
   do
-   cd ../
+  	cd ../
   done;
 }
 
