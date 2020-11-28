@@ -1,5 +1,4 @@
 BasedOnStyle: Google
-IndentWidth: 4
+IndentWidth: 2
 UseTab: Never
-# Removes max line length
-# ColumnLimit: 0
+ColumnLimit: 100
