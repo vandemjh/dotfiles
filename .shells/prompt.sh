@@ -75,7 +75,7 @@ function set_bash_prompt() {
 		fi
 		local GIT_NEW_FILES=""
 		local GIT_MERGING=`git rev-list -1 MERGE_HEAD 2> /dev/null`
-		if [ $GIT_MERGING == "" ]; then
+		if [ "$GIT_MERGING" == "" ]; then
 			local NUMBER_OF_NEW_FILES=`git ls-files --others --exclude-standard | wc -l 2> /dev/null`
 			if [ "$NUMBER_OF_NEW_FILES" != "" ] && [ "$NUMBER_OF_NEW_FILES" != "0" ]; then
 				GIT_NEW_FILES+="${COLOR_LIGHT_GREEN}+$NUMBER_OF_NEW_FILES${RESET_ALL}"
