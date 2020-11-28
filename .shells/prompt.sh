@@ -24,19 +24,28 @@ export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 export RESET_ALL='\[$(tput sgr0)\]\e[0m'
 
+# Add option to show time in prompt
+export PROMPT_SHOW_TIME="true"
+
 function addSpace() {
 	if [ "$1" != "" ]; then
 		echo " $1";
 	fi
 }
-
-# Add option to show time in prompt
-export PROMPT_SHOW_TIME="true"
-
+	
 # Cool symbols for later...
 # ⎇
+# ☇
+# ⚛
+# ⚠
+# ⛃
+# ★
+# ♨
 # ▁▂▃▄▅▆▇█
 function set_bash_prompt() {
+	# Git constants
+	local HASH_LENGTH=8;
+	
 	local CUR_EXIT=$?
 	local GIT_BUILDER="";
 	local HEADER="";
@@ -53,34 +62,44 @@ function set_bash_prompt() {
 		local GIT_FULL_DIR_FORMATTED_START="$BLOCKY_START${FORMAT_LIGHT_BLUE_HIGHLIGHT}${COLOR_YELLOW}${FORMAT_BOLD}$GIT_FULL_DIR"
 		local GIT_FULL_DIR_FORMATTED_END="${COLOR_LIGHT_BLUE}${FORMAT_LIGHT_LIGHT_PURPLE_HIGHLIGHT}${RESET_ALL}$BLOCKY_END"
 		local GIT_STASHES=""
-		local NUMBER_OF_STASHES="`git stash list | wc -l`"
+		local NUMBER_OF_STASHES=`git stash list | wc -l`
 		if [ "$NUMBER_OF_STASHES" != "" ] && [ "$NUMBER_OF_STASHES" != "0" ]; then
 			GIT_STASHES="${COLOR_MAGENTA}⚑$NUMBER_OF_STASHES${RESET_ALL}"
 		fi
 		local GIT_REMOTE=""
-		local IS_UPSTRAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
-		if [ "`git remote show`" != "" ] && [ "$IS_UPSTRAM" != "" ]; then
-			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream}`"
+		local IS_UPSTREAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
+		if [ "`git remote show`" != "" ] && [ "$IS_UPSTREAM" != "" ]; then
+			local GIT_UPSTREAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
+			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}$GIT_UPSTREAM"
 			GIT_REMOTE="$GIT_REMOTE${RESET_ALL}${COLOR_WHITE}❱${RESET_ALL}"
 		fi
 		local GIT_NEW_FILES=""
-		local NUMBER_OF_NEW_FILES="`git ls-files --others --exclude-standard | wc -l`"
-		if [ "$NUMBER_OF_NEW_FILES" != "" ] && [ "$NUMBER_OF_NEW_FILES" != "0" ]; then
-			GIT_NEW_FILES="${COLOR_LIGHT_GREEN}+$NUMBER_OF_NEW_FILES${RESET_ALL}"
-		fi
-		local NUMBER_OF_CHANGED_FILES="`git diff --name-only | wc -l`"
-		local GIT_CHANGED_FILES=""
-		if [ "$NUMBER_OF_CHANGED_FILES" != "" ] && [ "$NUMBER_OF_CHANGED_FILES" != "0" ]; then
-			GIT_CHANGED_FILES="${COLOR_BROWN}Δ$NUMBER_OF_CHANGED_FILES${RESET_ALL}"
+		local GIT_MERGING=`git rev-list -1 MERGE_HEAD 2> /dev/null`
+		if [ $GIT_MERGING == "" ]; then
+			local NUMBER_OF_NEW_FILES=`git ls-files --others --exclude-standard | wc -l 2> /dev/null`
+			if [ "$NUMBER_OF_NEW_FILES" != "" ] && [ "$NUMBER_OF_NEW_FILES" != "0" ]; then
+				GIT_NEW_FILES+="${COLOR_LIGHT_GREEN}+$NUMBER_OF_NEW_FILES${RESET_ALL}"
+			fi
+			local GIT_NEW_TO_BE_COMMITTED=`git diff --cached --numstat | wc -l 2> /dev/null`
+			if [ "$GIT_NEW_TO_BE_COMMITTED" != "" ] && [ "$GIT_NEW_TO_BE_COMMITTED" != "0" ]; then
+				GIT_NEW_FILES+="${COLOR_YELLOW}+$GIT_NEW_TO_BE_COMMITTED${RESET_ALL}"
+			fi
+			local NUMBER_OF_CHANGED_FILES=`git diff --name-only | wc -l`
+			local GIT_CHANGED_FILES=""
+			if [ "$NUMBER_OF_CHANGED_FILES" != "" ] && [ "$NUMBER_OF_CHANGED_FILES" != "0" ]; then
+				GIT_CHANGED_FILES="${COLOR_BROWN}Δ$NUMBER_OF_CHANGED_FILES${RESET_ALL}"
+			fi
+		else
+			GIT_MERGING=${COLOR_RED}∪:`echo $GIT_MERGING | head -c$HASH_LENGTH`${RESET_ALL}
 		fi
 		local GIT_COMMITS_AHEAD=""
 		local GIT_COMMITS_BEHIND=""
-		if [ "$IS_UPSTRAM" != "" ]; then
-			local GIT_NUMBER_OF_COMMITS_AHEAD="`git rev-list --count origin/$GIT_BRANCH..$GIT_BRANCH`"
+		if [ "$IS_UPSTREAM" != "" ]; then
+			local GIT_NUMBER_OF_COMMITS_AHEAD=`git rev-list --count origin/$GIT_BRANCH..$GIT_BRANCH 2> /dev/null`
 			if [ "$GIT_NUMBER_OF_COMMITS_AHEAD" != "" ] && [ "$GIT_NUMBER_OF_COMMITS_AHEAD" != "0" ]; then
 				GIT_COMMITS_AHEAD="↑$GIT_NUMBER_OF_COMMITS_AHEAD"
 			fi
-			local GIT_NUMBER_OF_COMMITS_BEHIND="`git rev-list --count $GIT_BRANCH..origin/$GIT_BRANCH`"
+			local GIT_NUMBER_OF_COMMITS_BEHIND=`git rev-list --count $GIT_BRANCH..origin/$GIT_BRANCH 2> /dev/null`
 			if [ "$GIT_NUMBER_OF_COMMITS_BEHIND" != "" ] && [ "$GIT_NUMBER_OF_COMMITS_BEHIND" != "0" ]; then
 				GIT_COMMITS_BEHIND="↓$GIT_NUMBER_OF_COMMITS_BEHIND"
 			fi
@@ -91,16 +110,18 @@ function set_bash_prompt() {
 		GIT_CHANGED_FILES="`addSpace "$GIT_CHANGED_FILES"`"
 		GIT_NEW_FILES="`addSpace "$GIT_NEW_FILES"`"
 		GIT_REMOTE="`addSpace "$GIT_REMOTE"`"
+		GIT_MERGING="`addSpace "$GIT_MERGING"`"
 		GIT_COMMITS_BEHIND_AHEAD="`addSpace "$GIT_COMMITS_BEHIND_AHEAD"`"
-		GIT_BUILDER=$GIT_BUILDER$GIT_FULL_DIR_FORMATTED_START
-		GIT_BUILDER=$GIT_BUILDER$GIT_FULL_DIR_FORMATTED_END
-		GIT_BUILDER=$GIT_BUILDER$GIT_BRANCH_FORMATTED
-		GIT_BUILDER=$GIT_BUILDER$GIT_REMOTE
+		GIT_BUILDER+=$GIT_FULL_DIR_FORMATTED_START
+		GIT_BUILDER+=$GIT_FULL_DIR_FORMATTED_END
+		GIT_BUILDER+=$GIT_BRANCH_FORMATTED
+		GIT_BUILDER+=$GIT_REMOTE
 		GIT_CHECK_CHANGES_EMOJI="$GIT_BUILDER"
-		GIT_BUILDER=$GIT_BUILDER$GIT_STASHES
-		GIT_BUILDER=$GIT_BUILDER$GIT_CHANGED_FILES
-		GIT_BUILDER=$GIT_BUILDER$GIT_NEW_FILES
-		GIT_BUILDER=$GIT_BUILDER$GIT_COMMITS_BEHIND_AHEAD
+		GIT_BUILDER+=$GIT_MERGING
+		GIT_BUILDER+=$GIT_STASHES
+		GIT_BUILDER+=$GIT_CHANGED_FILES
+		GIT_BUILDER+=$GIT_NEW_FILES
+		GIT_BUILDER+=$GIT_COMMITS_BEHIND_AHEAD
 		# Adds an emoji if there are no changes, stashes, or commits behind / ahead
 		if [ "$GIT_CHECK_CHANGES_EMOJI" == "$GIT_BUILDER" ]; then
 			GIT_BUILDER="$GIT_BUILDER`addSpace $(emoji "$GIT_BUILDER")`"
