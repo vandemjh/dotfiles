@@ -26,10 +26,10 @@ function up() {
 }
 
 # capture the output of a command so it can be retrieved with ret
-function cap () { tee /tmp/capture.out}
+function cap () { tee /tmp/capture.out; }
 
 # return the output of the most recent command that was captured by cap
-function ret () { cat /tmp/capture.out }
+function ret () { cat /tmp/capture.out; }
 
 # Gives a random emoji from the list
 # I can add more emojis here
