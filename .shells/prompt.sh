@@ -43,10 +43,10 @@ function addSpace() {
 # ♨
 # ▁▂▃▄▅▆▇█
 function set_bash_prompt() {
+	local CUR_EXIT=$?
 	# Git constants
 	local HASH_LENGTH=8;
 	
-	local CUR_EXIT=$?
 	local GIT_BUILDER="";
 	local HEADER="";
 	local CORE="${FORMAT_BOLD}${COLOR_YELLOW} \w${RESET_ALL}"
