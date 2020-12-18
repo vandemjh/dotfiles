@@ -17,6 +17,9 @@
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "remote.containers.defaultExtensions": [
         "esbenp.prettier-vscode",
     ],
@@ -31,10 +34,11 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.exclude": {
         "**/.classpath": true,
+        "**/.factorypath": true,
         "**/.project": true,
         "**/.settings": true,
-        "**/.factorypath": true
+        "**/node_modules": true
     },
     "remote.containers.dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
-    "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r $HOME/dotfiles/. $HOME; $HOME/.install.sh; source $HOME/.bashrc"
+    "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r $HOME/dotfiles/. $HOME; $HOME/.install.sh; source $HOME/.bashrc",
 }
