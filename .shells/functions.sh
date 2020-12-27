@@ -18,6 +18,21 @@ function extract () {
    fi
 }
 
+function compress() {
+	tar cfz $1.tgz $1/*
+}
+
+# Generates a random 
+function genpass() {
+	# Random gens may not include symbol
+	range="\!@#$%^&{}()[]|~*A-Z-a-z-0-9"
+	if [[ $1 =~ ^[0-9]+$ ]]; then
+		cat /dev/urandom | tr -dc $range | head -c $1
+	else
+		cat /dev/urandom | tr -dc $range | head -c 32
+	fi
+}
+
 function up() {
   for i in `seq 1 $1`;
   do
@@ -145,5 +160,5 @@ function emoji() {
 		🥃
 		🥤 
 	);
-	echo "${EMOJIS[$RANDOM % ${#EMOJIS[@]}]}"
+	echo ${EMOJIS[$RANDOM % ${#EMOJIS[@]}]}
 }
