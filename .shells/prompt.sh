@@ -148,4 +148,4 @@ function set_bash_prompt() {
     PS1="${HEADER}\[╭\]${CORE} ${CHECK}\n\[╰─ᐅ \]${RESET_ALL}"
 }
 
-export PROMPT_COMMAND="${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}set_bash_prompt"
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND} set_bash_prompt;"
