@@ -19,6 +19,9 @@
 	diff-files = "diff --name-only"
 	ignore = "!gi() { if test -f ${GIT_PREFIX:-.}$1; then echo \"${GIT_PREFIX:-.}$1\" >> .gitignore && echo \"${GIT_PREFIX:-.}$1 added to gitignore\"; else curl -sL https://www.gitignore.io/api/$@ >> .gitignore; echo gitignore cURLed; fi }; gi"
 	last = "log -1 HEAD"
+	
+	# Executes from the git root
+	exec = "!exec "
 
 	# Useful to not show changes to frequently changed files
 	mute = "!f() { cd ${GIT_PREFIX:-.} && git update-index --assume-unchanged $1; }; f"
