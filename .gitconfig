@@ -18,8 +18,7 @@
 	b = "branch"
 	root = "rev-parse --show-toplevel"
 	diff-files = "diff --name-only"
-	ignore = "!gi() { cd ${GIT_PREFIX:-.} && curl -sL https://www.gitignore.io/api/$@ >> .gitignore; echo 'gitignore created/updated!'; }; gi"
-	ignore-file = "!f() { cd ${GIT_PREFIX:-.} && for arg in $@; do echo $arg; done >> .gitignore; }; f"
+	ignore = "!gi() { if test -f ${GIT_PREFIX:-.}$1; then echo \"${GIT_PREFIX:-.}$1\" >> .gitignore && echo \"${GIT_PREFIX:-.}$1 added to gitignore\"; else curl -sL https://www.gitignore.io/api/$@ >> .gitignore; echo gitignore cURLed; fi }; gi"
 	last = "log -1 HEAD"
 
 	# Useful to not show changes to frequently changed files
