@@ -8,7 +8,6 @@
 	aliases = "config --get-regexp alias"
 	d = "diff"
 	s = "status -s"
-	rollback = "stash save --keep-index --include-untracked"
 	
 	# Short for 'commit all', -v is verbose, helps write commit msg
 	ca = "commit -av"
