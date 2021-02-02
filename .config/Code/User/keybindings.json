@@ -98,5 +98,9 @@
         "key": "alt+down",
         "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+/",
+        "command": "workbench.action.showCommands"
     }
 ]
