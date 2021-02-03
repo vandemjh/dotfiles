@@ -37,7 +37,8 @@
         "**/.factorypath": true,
         "**/.project": true,
         "**/.settings": true,
-        "**/node_modules": true
+        "node_modules": true,
+        "__pycache__": true,        
     },
     "remote.containers.dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
     "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r $HOME/dotfiles/. $HOME; $HOME/.install.sh; source $HOME/.bashrc",
