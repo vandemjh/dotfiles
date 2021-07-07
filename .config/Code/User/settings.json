@@ -43,4 +43,5 @@
     "remote.containers.dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
     "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r $HOME/dotfiles/. $HOME; $HOME/.install.sh; source $HOME/.bashrc",
     "python.languageServer": "Pylance",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
 }
