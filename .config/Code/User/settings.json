@@ -23,7 +23,6 @@
     "remote.containers.defaultExtensions": [
         "esbenp.prettier-vscode",
     ],
-    "window.zoomLevel": 0,
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "hidden",
     "workbench.tree.indent": 20,
@@ -43,4 +42,14 @@
     "remote.containers.dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
     "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r $HOME/dotfiles/. $HOME; $HOME/.install.sh; source $HOME/.bashrc",
     "python.languageServer": "Pylance",
+    "python.formatting.provider": "black",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "editor.wordWrap": "on",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
 }
