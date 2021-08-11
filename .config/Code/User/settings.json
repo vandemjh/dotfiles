@@ -52,4 +52,5 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
