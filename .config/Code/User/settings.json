@@ -46,8 +46,15 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
+    "python.formatting.provider": "black",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "editor.wordWrap": "on",
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
     },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
