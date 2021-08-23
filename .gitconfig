@@ -12,7 +12,7 @@
 	
 	# Short for 'commit all', -v is verbose, helps write commit msg
 	ca = "commit -av"
-	c = "commit"
+	c = "commit -v"
 	co = "checkout"
 	p = "push"
 	b = "branch"
