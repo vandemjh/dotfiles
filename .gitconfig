@@ -18,7 +18,7 @@
 	b = "branch"
 	root = "rev-parse --show-toplevel"
 	diff-files = "diff --name-only"
-	ignore = "!gi() { if test -f ${GIT_PREFIX:-.}$1; then echo \"${GIT_PREFIX:-.}$1\" >> .gitignore && echo \"${GIT_PREFIX:-.}$1 added to gitignore\"; else curl -sL https://www.gitignore.io/api/$@ >> .gitignore; echo gitignore cURLed; fi }; gi"
+	ignore = "!gi() { if test -f ${GIT_PREFIX:-.}/$1; then echo \"$1\" >> .gitignore && echo \"$1 added to gitignore\"; else curl -sL https://www.gitignore.io/api/$@ >> .gitignore; echo gitignore cURLed; fi }; gi"
 	last = "log -1 HEAD"
 	
 	# Executes from the git root
