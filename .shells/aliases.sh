@@ -36,3 +36,5 @@ alias docker-rm-all="docker rm \$(docker ps -aq)"
 alias start-chrome-no-web-security="google-chrome --disable-web-security --user-data-dir=\"/tmp/chrome-data\""
 
 alias sshjmu="ssh vandemjh@stu.cs.jmu.edu"
+
+alias weather="if curl -h &> /dev/null; then curl https://wttr.in/?format="%c%t"; echo; fi;"
