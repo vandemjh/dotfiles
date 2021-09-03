@@ -1,3 +1,25 @@
+# Useful for copying to clipboard
+function cb() {
+	# if [ -f "$@" ]; then
+	# 	echo "input is a file"
+	# 	xclip-copyfile "$@"
+	# fi
+	# if [ -d "$@" ]; then
+	# 	echo "input is a directory"
+	# 	xclip-copyfile "$@"
+	# fi
+	local in
+	in="`timeout --foreground 0.01 dd bs=1 count=1 2>/dev/null && cat /dev/stdin`"
+
+	if [ -z $in ]; then
+		# echo "No input found"
+		xclip -o -sel clip
+	else
+		# echo "Input found"
+		echo $in | xclip -sel clip
+	fi
+}
+
 function extract () {
    if [ -f $1 ] ; then
    case $1 in

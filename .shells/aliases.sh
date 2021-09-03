@@ -14,9 +14,6 @@ alias m='micro'
 # Lists most recently updated files in directory
 alias recent='ls -t -1'
 
-# Useful for copying to clipboard
-alias cb='xclip -sel clip'
-
 # Throws a file in the trash rather than rm
 alias tnt='mv --force -t ~/.local/share/Trash '
 
