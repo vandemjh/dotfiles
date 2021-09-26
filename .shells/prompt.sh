@@ -149,14 +149,26 @@ function set_bash_prompt() {
 		  127)
 			EXIT_TEXT="Not found"
 		    ;;
+   		  128)
+			EXIT_TEXT="Invalid"
+		  	;;
 		  129)
 			EXIT_TEXT="SIGHUP"
 		  	;;
 		  130)
 			EXIT_TEXT="Killed"
+		  	;;		  
+	  	  131)
+			EXIT_TEXT="SIGQUIT"
+		  	;;
+		  132)
+			EXIT_TEXT="SIGABRT"
 		  	;;
 		  137)
 			EXIT_TEXT="SIGKILL"
+		  	;;
+		  143)
+			EXIT_TEXT="SIGTERM"
 		  	;;
 		  139)
 			EXIT_TEXT="SIGV"
