@@ -22,13 +22,14 @@ export COLOR_BROWN='\e[0;33m'
 export COLOR_YELLOW='\e[1;33m'
 export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
-export RESET_ALL='\[$(tput sgr0)\]\e[0m'
+export RESET_ALL='\[$(tput sgr0)\]'
 
 # Add option to show time in prompt
 export PROMPT_SHOW_TIME="true"
 
 function addSpace() {
-	if [ "$1" != "" ]; then
+	local noSpace="$1 | xargs"
+	if [ "$1" != "" ] && [ "$1" != "0" ]; then
 		echo " $1";
 	fi
 }
@@ -66,7 +67,7 @@ function set_bash_prompt() {
 		local GIT_FULL_DIR_FORMATTED_START="$BLOCKY_START${FORMAT_LIGHT_BLUE_HIGHLIGHT}${COLOR_YELLOW}${FORMAT_BOLD}$GIT_FULL_DIR"
 		local GIT_FULL_DIR_FORMATTED_END="${COLOR_LIGHT_BLUE}${FORMAT_LIGHT_LIGHT_PURPLE_HIGHLIGHT}${RESET_ALL}$BLOCKY_END"
 		local GIT_STASHES=""
-		local NUMBER_OF_STASHES=`git stash list | wc -l`
+		local NUMBER_OF_STASHES=`git stash list | wc -l | xargs`
 		if [ "$NUMBER_OF_STASHES" != "" ] && [ "$NUMBER_OF_STASHES" != "0" ]; then
 			GIT_STASHES="${COLOR_MAGENTA}⚑$NUMBER_OF_STASHES${RESET_ALL}"
 		fi
@@ -80,15 +81,15 @@ function set_bash_prompt() {
 		local GIT_NEW_FILES=""
 		local GIT_MERGING=`git rev-list -1 MERGE_HEAD 2> /dev/null`
 		if [ "$GIT_MERGING" == "" ]; then
-			local NUMBER_OF_NEW_FILES=`git ls-files --others --exclude-standard | wc -l 2> /dev/null`
+			local NUMBER_OF_NEW_FILES=`git ls-files --others --exclude-standard | wc -l | xargs 2> /dev/null`
 			if [ "$NUMBER_OF_NEW_FILES" != "" ] && [ "$NUMBER_OF_NEW_FILES" != "0" ]; then
 				GIT_NEW_FILES+="${COLOR_LIGHT_GREEN}+$NUMBER_OF_NEW_FILES${RESET_ALL}"
 			fi
-			local GIT_NEW_TO_BE_COMMITTED=`git diff --cached --numstat | wc -l 2> /dev/null`
+			local GIT_NEW_TO_BE_COMMITTED=`git diff --cached --numstat | wc -l | xargs 2> /dev/null`
 			if [ "$GIT_NEW_TO_BE_COMMITTED" != "" ] && [ "$GIT_NEW_TO_BE_COMMITTED" != "0" ]; then
 				GIT_NEW_FILES+="${COLOR_YELLOW}+$GIT_NEW_TO_BE_COMMITTED${RESET_ALL}"
 			fi
-			local NUMBER_OF_CHANGED_FILES=`git diff --name-only | wc -l`
+			local NUMBER_OF_CHANGED_FILES=`git diff --name-only | wc -l | xargs`
 			local GIT_CHANGED_FILES=""
 			if [ "$NUMBER_OF_CHANGED_FILES" != "" ] && [ "$NUMBER_OF_CHANGED_FILES" != "0" ]; then
 				GIT_CHANGED_FILES="${COLOR_BROWN}Δ$NUMBER_OF_CHANGED_FILES${RESET_ALL}"
@@ -130,26 +131,43 @@ function set_bash_prompt() {
 		if [ "$GIT_CHECK_CHANGES_EMOJI" == "$GIT_BUILDER" ]; then
 			GIT_BUILDER="$GIT_BUILDER`addSpace $(emoji "$GIT_BUILDER")`"
 		fi
-		HEADER=`echo -en "\033]0;$GIT_FULL_DIR\a"`
+		HEADER="\[\033]0;$GIT_FULL_DIR\a\]"
 		CORE=$GIT_BUILDER
 	else
-		HEADER=`echo -en "\033]0;$(whoami)@$(hostname):/~/$(pwd|cut -d "/" -f 4-100)\a"`
+		HEADER="\[\033]0;$(whoami)@$(hostname):/~/$(pwd|cut -d "/" -f 4-100)\a\]"
 	fi
 	local CHECK=""
 	if [ $CUR_EXIT -ne 0 ]; then
-		local EXIT_TEXT="-$CUR_EXIT"
-		if [ $CUR_EXIT -eq "127" ]; then
-			EXIT_TEXT=" Not found"
-		elif [ $CUR_EXIT -eq "1" ]; then
-			EXIT_TEXT=" Error"
-		elif [ $CUR_EXIT -eq "139" ]; then
-			EXIT_TEXT=" SIGV"
-		fi
-		CHECK="${COLOR_RED}✘$EXIT_TEXT${RESET_ALL}"
+		EXIT_TEXT="- $CUR_EXIT"		
+		case $CUR_EXIT in
+		  1)
+			EXIT_TEXT="Error"
+		    ;;
+		  126)
+			EXIT_TEXT="Cannot exec"
+		    ;;
+		  127)
+			EXIT_TEXT="Not found"
+		    ;;
+		  129)
+			EXIT_TEXT="SIGHUP"
+		  	;;
+		  130)
+			EXIT_TEXT="Killed"
+		  	;;
+		  137)
+			EXIT_TEXT="SIGKILL"
+		  	;;
+		  139)
+			EXIT_TEXT="SIGV"
+		    ;;
+		esac
+		EXIT_TEXT="`addSpace "$EXIT_TEXT"`"	
+		CHECK="${COLOR_RED}✘${EXIT_TEXT}${RESET_ALL}"
 	else
 		CHECK="${COLOR_GREEN}✔${RESET_ALL}"
 	fi
-    PS1="${HEADER}\[╭\]${CORE} ${CHECK}\n\[╰─ᐅ \]${RESET_ALL}"
+    PS1="${HEADER}╭${CORE} ${CHECK}\n╰─ᐅ ${RESET_ALL}"
 }
 
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND} set_bash_prompt;"
