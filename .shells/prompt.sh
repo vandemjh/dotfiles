@@ -69,7 +69,7 @@ function set_bash_prompt() {
 		local GIT_STASHES=""
 		local NUMBER_OF_STASHES=`git stash list | wc -l | xargs`
 		if [ "$NUMBER_OF_STASHES" != "" ] && [ "$NUMBER_OF_STASHES" != "0" ]; then
-			GIT_STASHES="${COLOR_MAGENTA}⚑$NUMBER_OF_STASHES${RESET_ALL}"
+			GIT_STASHES="${COLOR_LIGHT_BLUE}⚑$NUMBER_OF_STASHES${RESET_ALL}"
 		fi
 		local GIT_REMOTE=""
 		local IS_UPSTREAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
