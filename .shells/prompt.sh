@@ -58,10 +58,10 @@ function set_bash_prompt() {
 		GIT_FULL_DIR="${GIT_FULL_DIR%/}"
 		local BLOCKY_START="┤${COLOR_LIGHT_BLUE}░▒▓${RESET_ALL}"
 		local BLOCKY_END="${COLOR_LIGHT_BLUE}▓▒░${RESET_ALL}"
-		local GIT_BRANCH="`git rev-parse --abbrev-ref --symbolic-full-name HEAD`"
-		# If detatched just show hash
+		local GIT_BRANCH="`git rev-parse --abbrev-ref --symbolic-full-name HEAD 2> /dev/null`"
+		# If detatched just show nothing
 		if [ "$GIT_BRANCH" == "HEAD" ]; then
-			GIT_BRANCH=`git rev-parse --short HEAD`
+			GIT_BRANCH=""
 		fi
 		local GIT_BRANCH_FORMATTED="${COLOR_LIGHT_CYAN}${FORMAT_BOLD}$GIT_BRANCH${RESET_ALL}"
 		local GIT_FULL_DIR_FORMATTED_START="$BLOCKY_START${FORMAT_LIGHT_BLUE_HIGHLIGHT}${COLOR_YELLOW}${FORMAT_BOLD}$GIT_FULL_DIR"
