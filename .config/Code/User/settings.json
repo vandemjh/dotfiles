@@ -56,5 +56,8 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.tabSize": 2,
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
