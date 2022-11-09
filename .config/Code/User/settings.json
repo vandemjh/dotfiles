@@ -59,5 +59,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "typescript.updateImportsOnFileMove.enabled": "always",
     "editor.tabSize": 2,
-    "javascript.updateImportsOnFileMove.enabled": "always"
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    }
 }
