@@ -25,7 +25,7 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 export RESET_ALL='\[$(tput sgr0)\]'
 
 # Add option to show time in prompt
-export PROMPT_SHOW_TIME="true"
+export PROMPT_SHOW_TIME=false
 
 function addSpace() {
 	local noSpace="$1 | xargs"
