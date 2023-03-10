@@ -1,26 +1,34 @@
-# Useful for copying to clipboard
-function cb() {
-	# if [ -f "$@" ]; then
-	# 	echo "input is a file"
-	# 	xclip-copyfile "$@"
-	# fi
-	# if [ -d "$@" ]; then
-	# 	echo "input is a directory"
-	# 	xclip-copyfile "$@"
-	# fi
-	local in
-	in="`timeout --foreground 0.01 dd bs=1 count=1 2>/dev/null && cat /dev/stdin`"
-
-	if [ -z $in ]; then
-		# echo "No input found"
-		xclip -o -sel clip
-	else
-		# echo "Input found"
-		echo $in | xclip -sel clip
+# Helper function to tell if arg is a number
+function isnum() {
+	if [ -n "$1" ]; then
+		return 0
 	fi
+	return 1
 }
 
-function extract () {
+# Round stdin to $1 decimal places
+function round() {
+	local input=$(</dev/stdin)
+	if ! `isnum $1`; then
+		echo "$1 cannot be rounded to a number" >&2
+		return 1
+	fi
+	if ! `isnum $1`; then
+		echo "$input cannot be rounded to a number" >&2
+	fi
+	printf "%.${1:-0}f" "$input"
+}
+
+# Progress bar for $1 things out of a total of $2 things
+function progress() {
+	local total=$2
+	local current=$1
+	local totalCols=`tput cols`
+	local cols=$(($totalCols - 3))
+	local full=""
+}
+
+function extract() {
    if [ -f $1 ] ; then
    case $1 in
      *.tar.bz2)   tar xjf $1   ;;
