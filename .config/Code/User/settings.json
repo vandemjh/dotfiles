@@ -23,7 +23,6 @@
     "remote.containers.defaultExtensions": [
         "esbenp.prettier-vscode",
     ],
-    "editor.minimap.enabled": false,
     "window.menuBarVisibility": "hidden",
     "workbench.tree.indent": 20,
     "workbench.tree.renderIndentGuides": "always",
@@ -62,5 +61,6 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
-    }
+    },
+    "editor.minimap.enabled": false
 }
