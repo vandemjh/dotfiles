@@ -54,6 +54,9 @@
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
+	# Pushes and sets upstream, optionally provide a remote to set upstream to
+	psu = "!f() { GB=`git rev-parse --abbrev-ref HEAD` && git push --set-upstream `([ \"$1\" != \"\" ] && echo $1) || echo origin` $GB; }; f"
+
 [init]
 	defaultBranch = "main"
 
