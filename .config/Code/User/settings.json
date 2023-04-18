@@ -62,5 +62,10 @@
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "gitlens.mode.active": "zen",
+    "terminal.integrated.inheritEnv": false
 }
