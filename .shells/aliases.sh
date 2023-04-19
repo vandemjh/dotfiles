@@ -29,6 +29,9 @@ alias recent='ls -t -1'
 # Docker
 alias docker-rm-all="docker rm \$(docker ps -aq)"
 
+# Pipe to clipboard
+alias cb="xclip -selection c"
+
 # Start chrome no web security
 alias start-chrome-no-web-security="google-chrome --disable-web-security --user-data-dir=\"/tmp/chrome-data\""
 
