@@ -5,6 +5,8 @@ alias la='ls -A'
 alias l='ls -CF'
 alias lsa='ls -a'
 
+alias watch='watch -n 0.5 --color'
+
 # Useful for testing .bashrc
 alias gogo='source $HOME/.bashrc'
 
@@ -37,3 +39,7 @@ alias start-chrome-no-web-security="google-chrome --disable-web-security --user-
 
 # Print the weather
 alias weather="if curl -h &> /dev/null; then curl https://wttr.in/?format="%c%t"; echo; fi;"
+
+# Transfer files across local network
+alias transfer="tar -cz $1 | nc -q 10 -l -p 54545"
+alias recieve="nc -w 10 $1 54545 | tar -xz"
