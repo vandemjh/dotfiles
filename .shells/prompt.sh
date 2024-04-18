@@ -1,32 +1,3 @@
-# Colors
-export FORMAT_BOLD='\[$(tput bold)\]'
-export FORMAT_ITALICS='\[$(tput sitm)\]'
-export FORMAT_RESET='\[$(tput sgr0)\]'
-export FORMAT_LIGHT_BLUE_HIGHLIGHT='\[$(tput setab 12)\]'
-export FORMAT_LIGHT_LIGHT_PURPLE_HIGHLIGHT='\[$(tput setab 5)\]'
-export COLOR_RESET='\e[0m'
-export COLOR_WHITE='\e[1;37m'
-export COLOR_BLACK='\e[0;30m'
-export COLOR_BLUE='\e[0;34m'
-export COLOR_LIGHT_BLUE='\e[1;34m'
-export COLOR_GREEN='\e[0;32m'
-export COLOR_LIGHT_GREEN='\e[1;32m'
-export COLOR_CYAN='\e[0;36m'
-export COLOR_LIGHT_CYAN='\e[1;36m'
-export COLOR_RED='\e[0;31m'
-export COLOR_LIGHT_RED='\e[1;31m'
-export COLOR_PURPLE='\e[0;35m'
-export COLOR_LIGHT_MAGENTA='\e[1;95m'
-export COLOR_MAGENTA='\e[1;35m'
-export COLOR_BROWN='\e[0;33m'
-export COLOR_YELLOW='\e[1;33m'
-export COLOR_GRAY='\e[0;30m'
-export COLOR_LIGHT_GRAY='\e[0;37m'
-export RESET_ALL='\[$(tput sgr0)\]'
-
-# Add option to show time in prompt
-export PROMPT_SHOW_TIME=false
-
 function addSpace() {
 	local noSpace="$1 | xargs"
 	if [ "$1" != "" ] && [ "$1" != "0" ]; then
@@ -45,6 +16,31 @@ function addSpace() {
 # ▁▂▃▄▅▆▇█
 function set_bash_prompt() {
 	local CUR_EXIT=$?
+	# Colors
+	local FORMAT_BOLD='\[$(tput bold)\]'
+	local FORMAT_ITALICS='\[$(tput sitm)\]'
+	local FORMAT_RESET='\[$(tput sgr0)\]'
+	local FORMAT_LIGHT_BLUE_HIGHLIGHT='\[$(tput setab 12)\]'
+	local FORMAT_LIGHT_LIGHT_PURPLE_HIGHLIGHT='\[$(tput setab 5)\]'
+	local COLOR_RESET='\e[0m'
+	local COLOR_WHITE='\e[1;37m'
+	local COLOR_BLACK='\e[0;30m'
+	local COLOR_BLUE='\e[0;34m'
+	local COLOR_LIGHT_BLUE='\e[1;34m'
+	local COLOR_GREEN='\e[0;32m'
+	local COLOR_LIGHT_GREEN='\e[1;32m'
+	local COLOR_CYAN='\e[0;36m'
+	local COLOR_LIGHT_CYAN='\e[1;36m'
+	local COLOR_RED='\e[0;31m'
+	local COLOR_LIGHT_RED='\e[1;31m'
+	local COLOR_PURPLE='\e[0;35m'
+	local COLOR_LIGHT_MAGENTA='\e[1;95m'
+	local COLOR_MAGENTA='\e[1;35m'
+	local COLOR_BROWN='\e[0;33m'
+	local COLOR_YELLOW='\e[1;33m'
+	local COLOR_GRAY='\e[0;30m'
+	local COLOR_LIGHT_GRAY='\e[0;37m'
+	local RESET_ALL='\[$(tput sgr0)\]'
 	# Git constants
 	local HASH_LENGTH=8;
 	
@@ -71,13 +67,6 @@ function set_bash_prompt() {
 		if [ "$NUMBER_OF_STASHES" != "" ] && [ "$NUMBER_OF_STASHES" != "0" ]; then
 			GIT_STASHES="${COLOR_LIGHT_BLUE}⚑$NUMBER_OF_STASHES${RESET_ALL}"
 		fi
-		local GIT_REMOTE=""
-		local IS_UPSTREAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
-		if [ "`git remote show`" != "" ] && [ "$IS_UPSTREAM" != "" ]; then
-			local GIT_UPSTREAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
-			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}$GIT_UPSTREAM"
-			GIT_REMOTE="$GIT_REMOTE${RESET_ALL}${COLOR_WHITE}❱${RESET_ALL}"
-		fi
 		local GIT_NEW_FILES=""
 		local GIT_MERGING=`git rev-list -1 MERGE_HEAD 2> /dev/null`
 		if [ "$GIT_MERGING" == "" ]; then
@@ -99,12 +88,17 @@ function set_bash_prompt() {
 		fi
 		local GIT_COMMITS_AHEAD=""
 		local GIT_COMMITS_BEHIND=""
+		local GIT_REMOTE=""
+		local IS_UPSTREAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
 		if [ "$IS_UPSTREAM" != "" ]; then
-			local GIT_NUMBER_OF_COMMITS_AHEAD=`git rev-list --count origin/$GIT_BRANCH..$GIT_BRANCH 2> /dev/null`
+			local GIT_UPSTREAM=`git rev-parse --abbrev-ref $GIT_BRANCH@{upstream} 2> /dev/null`
+			GIT_REMOTE="${COLOR_WHITE}❰${RESET_ALL}${COLOR_LIGHT_MAGENTA}$GIT_UPSTREAM"
+			GIT_REMOTE="$GIT_REMOTE${RESET_ALL}${COLOR_WHITE}❱${RESET_ALL}"
+			local GIT_NUMBER_OF_COMMITS_AHEAD=`git rev-list --count $GIT_UPSTREAM/$GIT_BRANCH..$GIT_BRANCH 2> /dev/null`
 			if [ "$GIT_NUMBER_OF_COMMITS_AHEAD" != "" ] && [ "$GIT_NUMBER_OF_COMMITS_AHEAD" != "0" ]; then
 				GIT_COMMITS_AHEAD="↑$GIT_NUMBER_OF_COMMITS_AHEAD"
 			fi
-			local GIT_NUMBER_OF_COMMITS_BEHIND=`git rev-list --count $GIT_BRANCH..origin/$GIT_BRANCH 2> /dev/null`
+			local GIT_NUMBER_OF_COMMITS_BEHIND=`git rev-list --count $GIT_BRANCH..$GIT_UPSTREAM/$GIT_BRANCH 2> /dev/null`
 			if [ "$GIT_NUMBER_OF_COMMITS_BEHIND" != "" ] && [ "$GIT_NUMBER_OF_COMMITS_BEHIND" != "0" ]; then
 				GIT_COMMITS_BEHIND="↓$GIT_NUMBER_OF_COMMITS_BEHIND"
 			fi
