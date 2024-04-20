@@ -19,7 +19,7 @@ alias recent='ls -t -1'
 # Throws a file in the trash rather than rm
 alias tnt='mv --force -t ~/.local/share/Trash '
 
-# For opening stuff easier
+# For opening stuff easierss
 alias op='xdg-open'
 
 # Uses the word config and the .cfg directory to keep dotfiles up to date

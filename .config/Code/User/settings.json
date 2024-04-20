@@ -26,7 +26,6 @@
     "window.menuBarVisibility": "hidden",
     "workbench.tree.indent": 20,
     "workbench.tree.renderIndentGuides": "always",
-    "workbench.colorTheme": "Kabukichō",
     "editor.columnSelection": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -67,5 +66,7 @@
         "editor.formatOnType": true
     },
     "gitlens.mode.active": "zen",
-    "terminal.integrated.inheritEnv": false
+    "terminal.integrated.inheritEnv": false,
+    "workbench.iconTheme": "vs-minimal",
+    "workbench.colorTheme": "Kabukichō"
 }

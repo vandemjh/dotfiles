@@ -6,6 +6,10 @@ function isnum() {
 	return 1
 }
 
+function json() {
+	node -p "util.inspect(JSON.parse(require('fs').readFileSync(0)), false, 5, true)"
+}
+
 # Round stdin to $1 decimal places
 function round() {
 	local input=$(</dev/stdin)
