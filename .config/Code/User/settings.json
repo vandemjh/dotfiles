@@ -37,24 +37,20 @@
         "node_modules": true,
         "**/__pycache__": true,        
     },
-    "remote.containers.dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
-    "remote.containers.dotfiles.installCommand": "shopt -s dotglob; cp -r $HOME/dotfiles/. $HOME; $HOME/.install.sh; source $HOME/.bashrc",
-    "python.languageServer": "Pylance",
+    "dotfiles.repository": "vandemjh/dotfiles.git",
+    "dotfiles.targetPath": "~/dotfiles",
+    "dotfiles.installCommand": "~/dotfiles/.install.sh",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
     "python.formatting.provider": "black",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
-    },
     "editor.wordWrap": "on",
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "typescript.updateImportsOnFileMove.enabled": "always",
     "editor.tabSize": 2,
     "javascript.updateImportsOnFileMove.enabled": "always",
