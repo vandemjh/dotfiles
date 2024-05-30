@@ -37,9 +37,7 @@
         "node_modules": true,
         "**/__pycache__": true,        
     },
-    "dotfiles.repository": "vandemjh/dotfiles.git",
-    "dotfiles.targetPath": "~/dotfiles",
-    "dotfiles.installCommand": "~/dotfiles/.install.sh",
+    "dotfiles.repository": "git@github.com:vandemjh/dotfiles.git",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
@@ -64,5 +62,6 @@
     "gitlens.mode.active": "zen",
     "terminal.integrated.inheritEnv": false,
     "workbench.iconTheme": "vs-minimal",
-    "workbench.colorTheme": "Kabukichō"
+    "workbench.colorTheme": "Kabukichō",
+    "cmake.showOptionsMovedNotification": false
 }

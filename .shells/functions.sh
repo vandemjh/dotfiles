@@ -1,3 +1,37 @@
+# Monitor a file for changes
+monitor() {
+    local file=$1
+    local cmd=$2
+    local interval=${3:-1} # Default interval of 2 seconds
+
+    if [[ ! -e "$file" ]]; then
+        echo "File does not exist: $file"
+        return 1
+    fi
+
+    local last_shasum=$(shasum "$file" | awk '{ print $1 }')
+
+    function p() {
+   		clear
+   		echo -e "Last updated: `date`"
+   		eval "$cmd"
+    }
+    p
+
+    while true; do
+        sleep $interval
+        if [[ ! -e "$file" ]]; then
+            echo "File deleted: $file"
+            return 1
+        fi
+       	local current_shasum=$(shasum "$file" | awk '{ print $1 }')
+        if [[ "$last_shasum" != "$current_shasum" ]]; then
+        	last_shasum="$current_shasum"
+        	p
+        fi
+    done
+}
+
 # Helper function to tell if arg is a number
 function isnum() {
 	if [ -n "$1" ]; then
