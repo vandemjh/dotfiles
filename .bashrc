@@ -30,3 +30,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Autojump
+. /usr/share/autojump/autojump.sh;
+
+. "$HOME/.local/bin/env"

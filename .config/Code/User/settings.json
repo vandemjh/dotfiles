@@ -12,7 +12,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -62,6 +62,14 @@
     "gitlens.mode.active": "zen",
     "terminal.integrated.inheritEnv": false,
     "workbench.iconTheme": "vs-minimal",
+    "cmake.showOptionsMovedNotification": false,
     "workbench.colorTheme": "Kabukichō",
-    "cmake.showOptionsMovedNotification": false
+    "github.copilot.editor.enableAutoCompletions": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "js/ts.implicitProjectConfig.checkJs": true
 }
