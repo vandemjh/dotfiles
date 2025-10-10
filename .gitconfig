@@ -51,6 +51,7 @@
 	contributors = "shortlog --summary --numbered"
 	# Amend the currently staged files to the latest commit.
 	amend = "commit --amend --reuse-message=HEAD"
+	rewrite = "commit --amend"
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 

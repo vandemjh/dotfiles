@@ -72,5 +72,6 @@
         "markdown": false,
         "scminput": false
     },
-    "js/ts.implicitProjectConfig.checkJs": true
+    "js/ts.implicitProjectConfig.checkJs": true,
+    "python.analysis.typeCheckingMode": "standard"
 }
